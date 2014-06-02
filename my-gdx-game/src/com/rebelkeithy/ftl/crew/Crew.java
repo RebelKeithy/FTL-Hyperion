@@ -61,6 +61,7 @@ public class Crew
 			System.out.println("adding crew at " + x + " " + y);
 			setPosition(room, x, y);
 			state = CrewStates.MANNING;
+			room.getSystem().mann(this);
 			return true;
 		}
 		
@@ -71,7 +72,7 @@ public class Crew
 				Tile tile = room.getTile(tileX, tileY);
 				if(!tile.getProperties().containsValue("crew"))
 				{
-					setPosition(room, tileY, tileY);
+					setPosition(room, tileX, tileY);
 					return true;
 				}
 			}

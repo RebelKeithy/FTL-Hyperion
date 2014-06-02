@@ -28,7 +28,9 @@ public class RoomRenderer
 	
 	public void render(SpriteBatch batch, Room room, int shipOffsetX, int shipOffsetY)
 	{
-		float oxygen = (float) (room.getProperties().getDouble("oxygen")/100f);
+		float oxygen = 1;
+		if(room.getProperties().containsValue("oxygen"))
+			oxygen = (float) (room.getProperties().getDouble("oxygen")/100f);
 		
 		Texture texture = getRoomTexture(room.getWidth(), room.getHeight());
 		batch.setColor(1, oxygen*0.23f + 0.77f, oxygen*0.23f + 0.77f, 1);

@@ -156,6 +156,9 @@ public class ShipRenderer
 
 	public boolean click(int screenX, int screenY, int button) 
 	{
+		if(!interactive)
+			return false;
+		
 		for(int i = 0; i < ship.getCrew().size(); i++)
 		{
 			Crew member = ship.getCrew().get(i);

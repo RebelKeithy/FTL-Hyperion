@@ -85,7 +85,7 @@ public class GameScreen implements FTLScreen
 			
 			Ship ship = FTLGame.instance().getPlayer();
 			
-			playerRenderer.render(batch, ship);
+			playerRenderer.render(batch, ship, 350, 270);
 			playerUIRenderer.renderFirstLayer(batch, ship);
 
 			batch.setColor(1, 1, 1, 0.8f);
@@ -114,16 +114,12 @@ public class GameScreen implements FTLScreen
 
 	@Override
 	public void show() 
-	{		
-		FTLGame gameClient = new FTLGame();
-		gameClient.init();
-		gameClient.generate();
-		
+	{				
 		//Ship player = ShipRegistry.build("The Kestrel", "Player");
 		Ship player = ShipRegistry.build("Red-Tail", "The Kestrel");
 		player.setPlayer(true);
 		
-		gameClient.addShip(player, 0, 0);	
+		FTLGame.instance().addShip(player, 0, 0);	
 		
 		player.getSystem("shields").addPower(2);
 		player.getSystem("health").addPower(0);

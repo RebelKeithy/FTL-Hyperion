@@ -2,10 +2,12 @@ package com.rebelkeithy.ftl.view;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.common.eventbus.EventBus;
+import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.view.scene.FTLScreen;
 import com.rebelkeithy.ftl.view.scene.MainMenu;
 import com.rebelkeithy.ftl.view.upgrade.Sounds;
@@ -23,6 +25,10 @@ public class FTLView extends Game
 	public void create()
 	{		
 		ResourceExtractor.extract();
+
+		FTLGame gameClient = new FTLGame();
+		gameClient.init();
+		gameClient.generate();
 		
 		instance = this;
 		RENDER_BUS = new EventBus();
@@ -100,6 +106,18 @@ public class FTLView extends Game
 		pixmap.setColor(100/256f, 1, 100/256f, 1);
 		pixmap.fill(); 
 		TextureRegistry.registerSprite("powerSlotPowered", new Texture(pixmap));
+		pixmap.dispose();
+
+		pixmap = new Pixmap(1, 1, Format.RGBA8888);
+		pixmap.setColor(Color.BLACK);
+		pixmap.fill(); 
+		TextureRegistry.registerSprite("black", new Texture(pixmap));
+		pixmap.dispose();
+
+		pixmap = new Pixmap(1, 1, Format.RGBA8888);
+		pixmap.setColor(Color.WHITE);
+		pixmap.fill(); 
+		TextureRegistry.registerSprite("white", new Texture(pixmap));
 		pixmap.dispose();
 	}
 

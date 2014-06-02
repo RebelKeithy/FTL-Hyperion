@@ -54,14 +54,24 @@ public class Crew
 	
 	public boolean addToRoom(Room room)
 	{
-		for(int x = 0; x < room.getWidth(); x++)
+		if(room.getSystem() != null && room.getSystem().canMann() && !room.getSystem().isManned())
 		{
-			for(int y = 0; y < room.getHeight(); y++)
+			int x = room.getSystem().getStationX();
+			int y = room.getSystem().getStationY();
+			System.out.println("adding crew at " + x + " " + y);
+			setPosition(room, x, y);
+			state = CrewStates.MANNING;
+			return true;
+		}
+		
+		for(int tileX = 0; tileX < room.getWidth(); tileX++)
+		{
+			for(int tileY = room.getHeight() - 1; tileY >= 0; tileY--)
 			{
-				Tile tile = room.getTile(x, y);
+				Tile tile = room.getTile(tileX, tileY);
 				if(!tile.getProperties().containsValue("crew"))
 				{
-					setPosition(room, x, y);
+					setPosition(room, tileY, tileY);
 					return true;
 				}
 			}
@@ -90,7 +100,9 @@ public class Crew
 	{
 		CrewUpdateEvent event = new CrewUpdateEvent(dt, this);
 		if(homeShip != null)
+		{
 			FTLGame.instance().getShip(homeShip).EVENT_BUS.post(event);
+		}
 		
 		if(state == CrewStates.WALKING)
 		{

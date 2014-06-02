@@ -77,7 +77,11 @@
             "race": "Human"
         },
         "Larry": {
-            "room": "room16",
+            "room": "room3",
+            "race": "Human"
+        },
+        "Steve": {
+            "room": "room7",
             "race": "Human"
         }
     },

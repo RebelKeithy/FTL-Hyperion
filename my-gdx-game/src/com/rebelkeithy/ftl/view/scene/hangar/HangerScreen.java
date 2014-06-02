@@ -8,7 +8,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rebelkeithy.ftl.ship.Ship;
+import com.rebelkeithy.ftl.ship.ShipRegistry;
 import com.rebelkeithy.ftl.view.Button;
+import com.rebelkeithy.ftl.view.ShipRenderer;
 import com.rebelkeithy.ftl.view.TextureRegistry;
 import com.rebelkeithy.ftl.view.scene.FTLScreen;
 
@@ -18,6 +21,8 @@ public class HangerScreen implements FTLScreen
 	private SpriteBatch batch;
 	
 	private Texture background;
+	private ShipRenderer shipRenderer;
+	private Ship ship;
 	
 	private List<Button> buttons;
 	private Button bEasy;
@@ -47,6 +52,11 @@ public class HangerScreen implements FTLScreen
 		batch = new SpriteBatch();
 		
 		background = TextureRegistry.registerSprite("custom_main", "customizeUI/custom_main");
+		ship = ShipRegistry.build("The Kestrel", "Player");
+		ship.getSystem("oxygen").addPower(1);
+		
+		shipRenderer = new ShipRenderer(ship);
+		shipRenderer.setInteractive(false);
 		buttons = new ArrayList<Button>();
 		
 		Texture easyOn = TextureRegistry.registerSprite("button_easy_on", "customizeUI/button_easy_on");
@@ -153,9 +163,12 @@ public class HangerScreen implements FTLScreen
 		batch.begin();
 		
 		batch.draw(background, 0, 0);
+		shipRenderer.render(batch, ship, 365, 410);
 
 		for(Button button : buttons)
 			button.render(batch);
+		
+	
 		
 		batch.end();
 	}

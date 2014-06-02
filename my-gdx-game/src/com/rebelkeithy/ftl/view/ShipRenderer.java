@@ -36,6 +36,7 @@ public class ShipRenderer
 	
 	RoomRenderer roomRenderer;
 	CrewRenderer crewRenderer;
+	private boolean interactive;
 	
 	public ShipRenderer(Ship ship)
 	{
@@ -88,11 +89,8 @@ public class ShipRenderer
 		
 	}
 	
-	public void render(SpriteBatch batch, Ship ship)
+	public void render(SpriteBatch batch, Ship ship, int shipOffsetX, int shipOffsetY)
 	{		
-		
-		
-		
 		//Matrix4 m = batch.getProjectionMatrix();
 		//Matrix4 m_saved = m.cpy();
 		
@@ -235,5 +233,10 @@ public class ShipRenderer
 		}
 		
 		return false;
+	}
+
+	public void setInteractive(boolean interactive) 
+	{
+		this.interactive = interactive;
 	}
 }

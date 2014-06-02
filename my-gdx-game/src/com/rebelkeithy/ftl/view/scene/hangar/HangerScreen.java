@@ -1,5 +1,6 @@
 package com.rebelkeithy.ftl.view.scene.hangar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -29,6 +30,11 @@ public class HangerScreen implements FTLScreen
 	private Button bList;
 	private Button bRandomShip;
 	
+	private Button bA;
+	private Button bB;
+	private Button bC;
+	private Button bHideRooms;
+	
 	public HangerScreen()
 	{
 		float w = Gdx.graphics.getWidth();
@@ -41,32 +47,100 @@ public class HangerScreen implements FTLScreen
 		batch = new SpriteBatch();
 		
 		background = TextureRegistry.registerSprite("custom_main", "customizeUI/custom_main");
+		buttons = new ArrayList<Button>();
 		
 		Texture easyOn = TextureRegistry.registerSprite("button_easy_on", "customizeUI/button_easy_on");
 		Texture easyOff = TextureRegistry.registerSprite("button_easy_off", "customizeUI/button_easy_off");
 		bEasy = new Button(977, 682, easyOn);
 		bEasy.setDownImage(easyOff);
 		bEasy.setHoverImage(easyOff);
+		buttons.add(bEasy);
 		
 		Texture normalOn = TextureRegistry.registerSprite("button_normal_on", "customizeUI/button_normal_on");
 		Texture normalOff = TextureRegistry.registerSprite("button_normal_off", "customizeUI/button_normal_off");
 		bNormal = new Button(977, 656, normalOn);
 		bNormal.setDownImage(normalOff);
 		bNormal.setHoverImage(normalOff);
+		buttons.add(bNormal);
 		
 		Texture hardOn = TextureRegistry.registerSprite("button_hard_on", "customizeUI/button_hard_on");
 		Texture hardOff = TextureRegistry.registerSprite("button_hard_off", "customizeUI/button_hard_off");
 		bHard = new Button(977, 630, hardOn);
 		bHard.setDownImage(hardOff);
 		bHard.setHoverImage(hardOff);
+		buttons.add(bHard);
 		
 		Texture startOn = TextureRegistry.registerSprite("button_start_on", "customizeUI/button_start_on");
 		Texture startSelect = TextureRegistry.registerSprite("button_start_select2", "customizeUI/button_start_select2");
-		bStart = new Button(1000, 650, startOn);
+		bStart = new Button(1082, 644, startOn);
 		bStart.setDownImage(startSelect);
 		bStart.setHoverImage(startSelect);
+		buttons.add(bStart);
 		
-		//Texture listOn = TextureRegistry.registerSprite(name, image)
+		Texture leftOn = TextureRegistry.registerSprite("button_arrow_on", "customizeUI/button_arrow_on");
+		Texture leftOff = TextureRegistry.registerSprite("button_arrow_off", "customizeUI/button_arrow_off");
+		Texture leftSelect = TextureRegistry.registerSprite("button_arrow_select2", "customizeUI/button_arrow_select2");
+		bLeft = new Button(27, 547, leftOn);
+		bLeft.setHoverImage(leftSelect);
+		bLeft.setDownImage(leftSelect);
+		bLeft.setDisabledImage(leftOff);
+		buttons.add(bLeft);
+		
+		bRight = new ButtonRight(131, 547, leftOn);
+		bRight.setHoverImage(leftSelect);
+		bRight.setDownImage(leftSelect);
+		bRight.setDisabledImage(leftOff);
+		buttons.add(bRight);
+		
+		Texture listOn = TextureRegistry.registerSprite("button_list_on", "customizeUI/button_list_on");
+		Texture listSelect = TextureRegistry.registerSprite("button_list_select2", "customizeUI/button_list_select2");
+		bList = new Button(64, 547, listOn);
+		bList.setHoverImage(listSelect);
+		bList.setDownImage(listSelect);
+		buttons.add(bList);
+		
+		Texture randomOn = TextureRegistry.registerSprite("button_random_ship_on", "customizeUI/button_random_ship_on");
+		Texture randomOff = TextureRegistry.registerSprite("button_random_ship_off", "customizeUI/button_random_ship_off");
+		Texture randomSelect = TextureRegistry.registerSprite("button_random_ship_select2", "customizeUI/button_random_ship_select2");
+		bRandomShip = new Button(19, 510, randomOn);
+		bRandomShip.setHoverImage(randomSelect);
+		bRandomShip.setDownImage(randomSelect);
+		bRandomShip.setDisabledImage(randomOff);
+		buttons.add(bRandomShip);
+		
+		Texture aOn = TextureRegistry.registerSprite("button_layouta_on", "customizeUI/button_layouta_on");
+		Texture aOff = TextureRegistry.registerSprite("button_layouta_off", "customizeUI/button_layouta_off");
+		Texture aSelect = TextureRegistry.registerSprite("button_layouta_select2", "customizeUI/button_layouta_select2");
+		bA = new Button(32, 438, aOn);
+		bA.setHoverImage(aSelect);
+		bA.setDownImage(aSelect);
+		bA.setDisabledImage(aOff);
+		buttons.add(bA);
+		
+		Texture bOn = TextureRegistry.registerSprite("button_layoutb_on", "customizeUI/button_layoutb_on");
+		Texture bOff = TextureRegistry.registerSprite("button_layoutb_off", "customizeUI/button_layoutb_off");
+		Texture bSelect = TextureRegistry.registerSprite("button_layoutb_select2", "customizeUI/button_layoutb_select2");
+		bB = new Button(77, 438, bOn);
+		bB.setHoverImage(bSelect);
+		bB.setDownImage(bSelect);
+		bB.setDisabledImage(bOff);
+		buttons.add(bB);
+		
+		Texture cOn = TextureRegistry.registerSprite("button_layoutc_on", "customizeUI/button_layoutc_on");
+		Texture cOff = TextureRegistry.registerSprite("button_layoutc_off", "customizeUI/button_layoutc_off");
+		Texture cSelect = TextureRegistry.registerSprite("button_layoutc_select2", "customizeUI/button_layoutc_select2");
+		bC = new Button(122, 438, cOn);
+		bC.setHoverImage(cSelect);
+		bC.setDownImage(cSelect);
+		bC.setDisabledImage(cOff);
+		buttons.add(bC);
+		
+		Texture hideRoomsOn = TextureRegistry.registerSprite("button_hide_on", "customizeUI/button_hide_on");
+		Texture hideRoomsSelect = TextureRegistry.registerSprite("button_hide_select2", "customizeUI/button_hide_select2");
+		bHideRooms = new Button(20, 391, hideRoomsOn);
+		bHideRooms.setHoverImage(hideRoomsSelect);
+		bHideRooms.setDownImage(hideRoomsSelect);
+		buttons.add(bHideRooms);
 	}
 
 	@Override
@@ -75,16 +149,13 @@ public class HangerScreen implements FTLScreen
 		Gdx.gl.glClearColor(31/256f, 34/256f, 38/256f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		bStart.setPosition(1082, 644);
-		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		
 		batch.draw(background, 0, 0);
-		bEasy.render(batch);
-		bNormal.render(batch);
-		bHard.render(batch);
-		bStart.render(batch);
+
+		for(Button button : buttons)
+			button.render(batch);
 		
 		batch.end();
 	}
@@ -128,6 +199,10 @@ public class HangerScreen implements FTLScreen
 	@Override
 	public boolean click(int screenX, int screenY, int button) 
 	{
+		for(Button b : buttons)
+			if(b.click(screenX, screenY, button))
+				return true;
+		
 		return false;
 	}
 

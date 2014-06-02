@@ -101,7 +101,7 @@ public class Button
 		
 		if(disabled)
 		{
-			batch.draw(image_disabled, imageX, imageY);
+			render(batch, image_disabled, imageX, imageY);
 			return;
 		}
 
@@ -115,14 +115,19 @@ public class Button
 		if(hover)
 		{
 			if(Gdx.input.isButtonPressed(com.badlogic.gdx.Input.Buttons.LEFT))
-				batch.draw(image_down, imageX, imageY);
+				render(batch, image_down, imageX, imageY);
 			else
-				batch.draw(image_hover, imageX, imageY);
+				render(batch, image_hover, imageX, imageY);
 		}
 		else
 		{
-			batch.draw(image_up, imageX, imageY);
+			render(batch, image_up, imageX, imageY);
 		}
+	}
+	
+	protected void render(SpriteBatch batch, Texture texture, int x, int y)
+	{
+		batch.draw(texture, x, y);
 	}
 
 	public void setHoverImage(Texture texture) 

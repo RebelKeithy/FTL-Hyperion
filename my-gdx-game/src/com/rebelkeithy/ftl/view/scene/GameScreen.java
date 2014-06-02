@@ -127,6 +127,7 @@ public class GameScreen implements FTLScreen
 		player.getSystem("oxygen").addPower(1);
 		
 		playerRenderer = new ShipRenderer(player);
+		playerRenderer.setInteractive(true);
 		playerUIRenderer = new ShipUIRenderer();
 		playerUIRenderer.init();
 

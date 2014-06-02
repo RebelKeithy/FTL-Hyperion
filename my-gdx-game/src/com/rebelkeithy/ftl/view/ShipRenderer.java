@@ -91,6 +91,8 @@ public class ShipRenderer
 	
 	public void render(SpriteBatch batch, Ship ship, int shipOffsetX, int shipOffsetY)
 	{		
+		this.shipOffsetX = shipOffsetX;
+		this.shipOffsetY = shipOffsetY;
 		//Matrix4 m = batch.getProjectionMatrix();
 		//Matrix4 m_saved = m.cpy();
 		

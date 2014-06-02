@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.ship.Direction;
 import com.rebelkeithy.ftl.ship.Door;
 
@@ -57,12 +58,16 @@ public class DoorRenderer
 		int shrinkH = 5;
 		int shrinkV = 10;
 		float doorAlpha = 0.75f;
-		if(door.direction == Direction.RIGHT || door.direction == Direction.LEFT)
-			if(mouseX > door.getX()*35 - 35/2 + shrinkV && mouseX < door.getX()*35 + 35/2 - shrinkV && mouseY > door.getY()*35 + shrinkH && mouseY < door.getY()*35 + 35 - shrinkH)
-				hover = true;
-		if(door.direction == Direction.UP || door.direction == Direction.DOWN)
-			if(mouseX > door.getX()*35 + shrinkH && mouseX < door.getX()*35 + 35 - shrinkH && mouseY > door.getY()*35 - 35/2 + shrinkV && mouseY < door.getY()*35 + 35/2 - shrinkV)
-				hover = true;
+
+		if(FTLGame.instance().getPlayer() != null && FTLGame.instance().getPlayer().getName().equals(door.room1.getShip().getName()))
+		{
+			if(door.direction == Direction.RIGHT || door.direction == Direction.LEFT)
+				if(mouseX > door.getX()*35 - 35/2 + shrinkV && mouseX < door.getX()*35 + 35/2 - shrinkV && mouseY > door.getY()*35 + shrinkH && mouseY < door.getY()*35 + 35 - shrinkH)
+					hover = true;
+			if(door.direction == Direction.UP || door.direction == Direction.DOWN)
+				if(mouseX > door.getX()*35 + shrinkH && mouseX < door.getX()*35 + 35 - shrinkH && mouseY > door.getY()*35 - 35/2 + shrinkV && mouseY < door.getY()*35 + 35/2 - shrinkV)
+					hover = true;
+		}
 		
 		if(FTLView.inputHandler.selected != null)
 			hover = false;

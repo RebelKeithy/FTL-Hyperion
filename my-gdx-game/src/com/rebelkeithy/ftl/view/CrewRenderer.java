@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.crew.Crew;
 import com.rebelkeithy.ftl.crew.CrewStates;
 import com.rebelkeithy.ftl.crew.Skill;
@@ -271,9 +272,12 @@ public class CrewRenderer
 		
 		
 		boolean hover = false;
-		if(mouseX > crew.getX()*35 && mouseX < crew.getX()*35 + 35 && mouseY > crew.getY()*35 && mouseY < crew.getY()*35 + 35)
+		if(FTLGame.instance().getPlayer() != null && FTLGame.instance().getPlayer().getName().equals(crew.getHomeShip()))
 		{
-			hover = true;
+			if(mouseX > crew.getX()*35 && mouseX < crew.getX()*35 + 35 && mouseY > crew.getY()*35 && mouseY < crew.getY()*35 + 35)
+			{
+				hover = true;
+			}
 		}
 		
 		if(hover == true)

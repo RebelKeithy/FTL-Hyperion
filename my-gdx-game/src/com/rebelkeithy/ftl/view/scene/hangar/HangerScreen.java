@@ -72,7 +72,7 @@ public class HangerScreen implements FTLScreen
 		
 		Texture startOn = TextureRegistry.registerSprite("button_start_on", "customizeUI/button_start_on");
 		Texture startSelect = TextureRegistry.registerSprite("button_start_select2", "customizeUI/button_start_select2");
-		bStart = new Button(1082, 644, startOn);
+		bStart = new StartButton(1082, 644, startOn);
 		bStart.setDownImage(startSelect);
 		bStart.setHoverImage(startSelect);
 		buttons.add(bStart);

@@ -24,6 +24,11 @@ public class HangerScreen implements FTLScreen
 	private Button bHard;
 	private Button bStart;
 	
+	private Button bLeft;
+	private Button bRight;
+	private Button bList;
+	private Button bRandomShip;
+	
 	public HangerScreen()
 	{
 		float w = Gdx.graphics.getWidth();
@@ -60,6 +65,8 @@ public class HangerScreen implements FTLScreen
 		bStart = new Button(1000, 650, startOn);
 		bStart.setDownImage(startSelect);
 		bStart.setHoverImage(startSelect);
+		
+		//Texture listOn = TextureRegistry.registerSprite(name, image)
 	}
 
 	@Override

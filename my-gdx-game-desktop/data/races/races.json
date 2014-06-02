@@ -1,0 +1,58 @@
+{
+    "Human": {
+        "texture": "people/human_base",
+        "health": 100,
+        "attack": 1,
+        "repair": 1,
+        "speed": 1
+    },
+    "Engi": {
+        "texture": "people/engi_base",
+        "health": 100,
+        "attack": 0.5,
+        "repair": 2,
+        "speed": 1
+    },
+    "Mantis": {
+        "texture": "people/mantis_base",
+        "health": 100,
+        "attack": 1.5,
+        "repair": 0.5,
+        "speed": 1.2
+    },
+    "Rockman": {
+        "texture": "people/rock_base",
+        "health": 150,
+        "attack": 1,
+        "repair": 1,
+        "speed": 0.5
+    },
+    "Zoltan": {
+        "texture": "people/energy_base",
+        "health": 70,
+        "attack": 1,
+        "repair": 1,
+        "speed": 1
+    },
+    "Slug": {
+        "texture": "people/slug_base",
+        "health": 100,
+        "attack": 1,
+        "repair": 1,
+        "speed": 1
+    },
+    "Crystal": {
+        "texture": "people/crystal_base",
+        "health": 125,
+        "attack": 1,
+        "repair": 1,
+        "speed": 0.8
+    },
+    "Lanius": {
+        "texture": "people/_base",
+        "health": 100,
+        "attack": 1,
+        "repair": 1,
+        "speed": 0.8
+    }
+}

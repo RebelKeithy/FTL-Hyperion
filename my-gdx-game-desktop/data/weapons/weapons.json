@@ -1,0 +1,212 @@
+{
+    "projectile": {
+        "BasicLaser": {
+            "name": "Basic Laser",
+            "power": 1,
+            "cooldown": 10
+        },
+        "DualLasers": {
+            "power": 1,
+            "cooldown": 2,
+            "shots": 2
+        },
+        "BurstMkI": {
+            "name": "Burst Laser I",
+            "power": 1,
+            "cooldown": 11,
+            "shots": 2
+        },
+        "BurstMkII": {
+            "name": "Burst Laser II",
+            "power": 2,
+            "cooldown": 12,
+            "shots": 3,
+            "damage": {
+                "system": 1,
+                "hull": 15
+            }
+        },
+        "BurstMkIII": {
+            "name": "Burst Laser III",
+            "power": 4,
+            "cooldown": 19,
+            "shots": 5
+        },
+        "HeavyPierceI": {
+            "power": 2,
+            "cooldown": 10,
+            "pierce": 1,
+            "damage": {
+                "hull": 2,
+                "system": 2
+            }
+        },
+        "HeavyLaserI": {
+            "power": 1,
+            "cooldown": 9,
+            "damage": {
+                "hull": 2,
+                "system": 2
+            }
+        },
+        "HeavyLaserII": {
+            "power": 3,
+            "cooldown": 13,
+            "shots": 2,
+            "damage": {
+                "hull": 2,
+                "system": 2
+            }
+        },
+        "HullLaserI": {
+            "power": 2,
+            "cooldown": 14,
+            "numShots": 2,
+            "damage": {
+                "hull": 1,
+                "system": 1,
+                "systemless": 1
+            }
+        },
+        "HullLaserII": {
+            "power": 3,
+            "cooldown": 15,
+            "numShots": 3,
+            "damage": {
+                "hull": 1,
+                "system": 1,
+                "systemless": 1
+            }
+        },
+        "Leto": {
+            "power": 1,
+            "cooldown": 9,
+            "pierce": 5,
+            "ammo": "missile"
+        },
+        "Artemis": {
+            "power": 1,
+            "cooldown": 11,
+            "pierce": 5,
+            "damage": {
+                "hull": 2,
+                "system": 2
+            },
+            "ammo": "missile"
+        },
+        "Hermes": {
+            "power": 3,
+            "cooldown": 14,
+            "pierce": 5,
+            "damage": {
+                "hull": 3,
+                "system": 3
+            },
+            "ammo": "missile"
+        },
+        "Breach": {
+            "power": 3,
+            "cooldown": 22,
+            "pierce": 5,
+            "damage": {
+                "hull": 4,
+                "system": 4
+            },
+            "ammo": "missile"
+        },
+        "Pegasus": {
+            "power": 3,
+            "cooldown": 20,
+            "pierce": 5,
+            "shots": 2,
+            "damage": {
+                "hull": 2,
+                "system": 2
+            },
+            "ammo": "missile"
+        },
+        "IonBlast": {
+            "power": 1,
+            "cooldown": 8,
+            "damage": {
+                "ion": 1
+            }
+        },
+        "IonBlastMkII": {
+            "power": 3,
+            "cooldown": 4,
+            "damage": {
+                "ion": 1
+            }
+        },
+        "HeavyIon": {
+            "power": 2,
+            "cooldown": 13,
+            "damage": {
+                "ion": 2
+            }
+        }        
+    },
+    "bomb": {
+        "IonBomb": {
+            "power": 1,
+            "cooldown": 28,
+            "damage": {
+                "ion": 4
+            },
+			"ammo": "missile"
+        },
+		"SBomb": {
+			"power": 1,
+			"cooldown": 13,
+			"damage": {
+				"system": 2,
+				"crew": 2
+			},
+			"ammo": "missile"
+		},
+		"BreachI": {
+			"power": 1,
+			"cooldown": 9,
+			"damage": {
+				"system": 1,
+				"crew": 2
+			},
+			"ammo": "missile"
+		},
+		"BreachII": {
+			"power": 2,
+			"cooldown": 17,
+			"damage": {
+				"system": 3,
+				"crew": 3
+			},
+			"ammo": "missile"
+		},
+		"FireBomb": {
+			"power": 2,
+			"cooldown": 17,
+			"damage": {
+				"system": 0,
+				"crew": 2
+			},
+			"ammo": "missile"
+		},
+		"HealingBurst": {
+			"power": 1,
+			"cooldown": 18,
+			"damage": {
+				"crew": -10
+			},
+			"ammo": "missile"
+		},
+		"RepairBomb": {
+			"power": 1,
+			"cooldown": 14,
+			"damage": {
+				"system": -8
+			},
+			"ammo": "missile"
+		}
+    }
+}

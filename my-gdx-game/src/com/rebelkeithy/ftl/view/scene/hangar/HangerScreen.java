@@ -24,10 +24,12 @@ public class HangerScreen implements FTLScreen
 	private ShipRenderer shipRenderer;
 	private Ship ship;
 	
+	private int difficulty = 1;
+	
 	private List<Button> buttons;
-	private Button bEasy;
-	private Button bNormal;
-	private Button bHard;
+	private DifficultyButton bEasy;
+	private DifficultyButton bNormal;
+	private DifficultyButton bHard;
 	private Button bStart;
 	
 	private Button bLeft;
@@ -54,6 +56,7 @@ public class HangerScreen implements FTLScreen
 		background = TextureRegistry.registerSprite("custom_main", "customizeUI/custom_main");
 		ship = ShipRegistry.build("The Kestrel", "Player");
 		ship.getSystem("oxygen").addPower(1);
+		ship.getSystem("engines").addPower(1);
 		
 		shipRenderer = new ShipRenderer(ship);
 		shipRenderer.setInteractive(false);
@@ -61,21 +64,21 @@ public class HangerScreen implements FTLScreen
 		
 		Texture easyOn = TextureRegistry.registerSprite("button_easy_on", "customizeUI/button_easy_on");
 		Texture easyOff = TextureRegistry.registerSprite("button_easy_off", "customizeUI/button_easy_off");
-		bEasy = new Button(977, 682, easyOn);
+		bEasy = new DifficultyButton(this, 0, 977, 682, easyOn);
 		bEasy.setDownImage(easyOff);
 		bEasy.setHoverImage(easyOff);
 		buttons.add(bEasy);
 		
 		Texture normalOn = TextureRegistry.registerSprite("button_normal_on", "customizeUI/button_normal_on");
 		Texture normalOff = TextureRegistry.registerSprite("button_normal_off", "customizeUI/button_normal_off");
-		bNormal = new Button(977, 656, normalOn);
+		bNormal = new DifficultyButton(this, 1, 977, 656, normalOn);
 		bNormal.setDownImage(normalOff);
 		bNormal.setHoverImage(normalOff);
 		buttons.add(bNormal);
 		
 		Texture hardOn = TextureRegistry.registerSprite("button_hard_on", "customizeUI/button_hard_on");
 		Texture hardOff = TextureRegistry.registerSprite("button_hard_off", "customizeUI/button_hard_off");
-		bHard = new Button(977, 630, hardOn);
+		bHard = new DifficultyButton(this, 2, 977, 630, hardOn);
 		bHard.setDownImage(hardOff);
 		bHard.setHoverImage(hardOff);
 		buttons.add(bHard);
@@ -223,6 +226,20 @@ public class HangerScreen implements FTLScreen
 	public void setTooltipText(String text, int x, int y, int width, int height) 
 	{
 		
+	}
+
+	public void setDifficulty(int difficulty) 
+	{
+		bEasy.setSelected(false);
+		bNormal.setSelected(false);
+		bHard.setSelected(false);
+		this.difficulty = difficulty;
+		if(difficulty == 0)
+			bEasy.setSelected(true);
+		if(difficulty == 1)
+			bNormal.setSelected(true);
+		if(difficulty == 2)
+			bHard.setSelected(true);
 	}
 
 }

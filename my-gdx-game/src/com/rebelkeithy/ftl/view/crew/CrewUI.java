@@ -4,10 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rebelkeithy.ftl.crew.Crew;
 import com.rebelkeithy.ftl.ship.Ship;
 import com.rebelkeithy.ftl.view.Button;
+import com.rebelkeithy.ftl.view.CrewBox;
 import com.rebelkeithy.ftl.view.EquipmentTabButton;
 import com.rebelkeithy.ftl.view.Fonts;
 import com.rebelkeithy.ftl.view.GUI;
@@ -18,9 +18,6 @@ import com.rebelkeithy.ftl.view.upgrade.AcceptButton;
 public class CrewUI extends GUI
 {
 	private Texture background;
-	private Texture crewSlot;
-	private Texture crewSlotSelected;
-	private Texture crewSlotEmpty;
 	
 	private Texture acceptBase;
 	private Button accept;
@@ -30,15 +27,14 @@ public class CrewUI extends GUI
 	private Button[] dismissButtons;
 	
 	private Ship ship;
+	private CrewBox crewBox;
 	
 	public CrewUI(Ship ship)
 	{
 		this.ship = ship;
+		crewBox = new CrewBox();
 		
 		background = TextureRegistry.registerSprite("crew_main", "upgradeUI/Equipment/crew_main");
-		crewSlot = TextureRegistry.registerSprite("box_crew_on", "upgradeUI/Equipment/box_crew_on");
-		crewSlotSelected = TextureRegistry.registerSprite("box_crew_selected", "upgradeUI/Equipment/box_crew_selected");
-		crewSlotEmpty = TextureRegistry.registerSprite("box_crew_off", "upgradeUI/Equipment/box_crew_off");
 		
 		Texture upgradesTab = TextureRegistry.registerSprite("crew_upgrades_on", "upgradeUI/Equipment/tabButtons/crew_upgrades_on");
 		Texture upgradesTabSelect = TextureRegistry.registerSprite("crew_upgrades_select2", "upgradeUI/Equipment/tabButtons/crew_upgrades_select2");
@@ -98,30 +94,14 @@ public class CrewUI extends GUI
 			{
 				Crew crew = ship.getCrew().get(i);
 				
-				if(hover)
-				{
-					batch.draw(new TextureRegion(crewSlotSelected, 0, 45, 100, 22), offsetX, offsetY-19);
-					batch.draw(crewSlotSelected, offsetX, offsetY);
-				}
-				else
-				{
-					batch.draw(new TextureRegion(crewSlot, 0, 45, 100, 22), offsetX, offsetY-19);
-					batch.draw(crewSlot, offsetX, offsetY);
-				}
-				dismissButtons[i].render(batch);
+				// Render CrewBox here
+				crewBox.render(batch, crew, offsetX, offsetY);
 				
-				Color color = Fonts.font8.getColor();
-				if(mouseX > offsetX && mouseX < offsetX + 100 && mouseY > offsetY + 4 && mouseY < offsetY + 18)
-					Fonts.font8.setColor(245/256f, 50/256f, 50/256f, 1);
-				else
-					Fonts.font8.setColor(Color.WHITE);
-				int crewNameWidth = (int) Fonts.font8.getBounds(crew.getName()).width;
-				Fonts.font8.draw(batch, crew.getName(), offsetX + 48 - crewNameWidth/2, offsetY + 15);
-				Fonts.font8.setColor(color);
+				dismissButtons[i].render(batch);
 			}
 			else
 			{
-				batch.draw(crewSlotEmpty, offsetX, offsetY);
+				crewBox.render(batch, null, offsetX, offsetY);
 			}
 		}
 		for(int i = ship.getCrew().size(); i < 8; i++)

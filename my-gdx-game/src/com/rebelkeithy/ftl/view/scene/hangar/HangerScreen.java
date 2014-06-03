@@ -8,10 +8,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rebelkeithy.ftl.crew.Crew;
 import com.rebelkeithy.ftl.ship.Ship;
 import com.rebelkeithy.ftl.ship.ShipRegistry;
-import com.rebelkeithy.ftl.systems.AbstractShipSystem;
 import com.rebelkeithy.ftl.view.Button;
+import com.rebelkeithy.ftl.view.CrewBox;
 import com.rebelkeithy.ftl.view.ShipRenderer;
 import com.rebelkeithy.ftl.view.TextureRegistry;
 import com.rebelkeithy.ftl.view.scene.FTLScreen;
@@ -24,6 +25,7 @@ public class HangerScreen implements FTLScreen
 	private Texture background;
 	private ShipRenderer shipRenderer;
 	private List<HangerSystemRenderer> systemRenderers;
+	private CrewBox crewBox;
 	private Ship ship;
 	
 	private int difficulty = 1;
@@ -69,6 +71,8 @@ public class HangerScreen implements FTLScreen
 		{
 			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
 		}
+		
+		crewBox = new CrewBox();
 		
 		buttons = new ArrayList<Button>();
 		
@@ -191,7 +195,18 @@ public class HangerScreen implements FTLScreen
 		for(Button button : buttons)
 			button.render(batch);
 		
-	
+		for(i = 0; i < 4; i++)
+		{
+			if(i < ship.getCrew().size())
+			{
+				Crew crew = ship.getCrew().get(i);
+				crewBox.render(batch, crew, 70 + ((i%2) * 160), 136 - ((i/2) * 93));
+			}
+			else
+			{
+				crewBox.render(batch, null, 70 + ((i%2) * 160), 136 - ((i/2) * 93));
+			}
+		}
 		
 		batch.end();
 	}

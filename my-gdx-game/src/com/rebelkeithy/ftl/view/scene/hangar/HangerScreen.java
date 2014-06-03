@@ -11,10 +11,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rebelkeithy.ftl.crew.Crew;
 import com.rebelkeithy.ftl.ship.Ship;
 import com.rebelkeithy.ftl.ship.ShipRegistry;
+import com.rebelkeithy.ftl.systems.WeaponSystem;
 import com.rebelkeithy.ftl.view.Button;
 import com.rebelkeithy.ftl.view.CrewBox;
 import com.rebelkeithy.ftl.view.ShipRenderer;
 import com.rebelkeithy.ftl.view.TextureRegistry;
+import com.rebelkeithy.ftl.view.WeaponBox;
+import com.rebelkeithy.ftl.view.WeaponItemBox;
 import com.rebelkeithy.ftl.view.scene.FTLScreen;
 
 public class HangerScreen implements FTLScreen
@@ -25,6 +28,7 @@ public class HangerScreen implements FTLScreen
 	private Texture background;
 	private ShipRenderer shipRenderer;
 	private List<HangerSystemRenderer> systemRenderers;
+	private List<WeaponItemBox> weapons;
 	private CrewBox crewBox;
 	private Ship ship;
 	
@@ -70,6 +74,16 @@ public class HangerScreen implements FTLScreen
 		for(String system : systemNames)
 		{
 			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
+		}
+		
+		weapons = new ArrayList<WeaponItemBox>();
+		if(ship.getSystem("weapons") != null)
+		{
+			WeaponSystem weaponSystem = (WeaponSystem) ship.getSystem("weapons");
+			for(int i = 0; i < 4; i++)
+			{
+				weapons.add(new WeaponItemBox(weaponSystem.getWeapon(i)));
+			}
 		}
 		
 		crewBox = new CrewBox();
@@ -190,6 +204,11 @@ public class HangerScreen implements FTLScreen
 		{
 			renderer.render(batch, 373 + i * 38, 244);
 			i++;
+		}
+		
+		for(i = 0; i < weapons.size(); i++)
+		{
+			weapons.get(i).render(batch, 435 + 117*i, 130);
 		}
 		
 		for(Button button : buttons)

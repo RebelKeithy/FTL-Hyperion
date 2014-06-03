@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rebelkeithy.ftl.ship.Ship;
 import com.rebelkeithy.ftl.ship.ShipRegistry;
+import com.rebelkeithy.ftl.systems.AbstractShipSystem;
 import com.rebelkeithy.ftl.view.Button;
 import com.rebelkeithy.ftl.view.ShipRenderer;
 import com.rebelkeithy.ftl.view.TextureRegistry;
@@ -22,6 +23,7 @@ public class HangerScreen implements FTLScreen
 	
 	private Texture background;
 	private ShipRenderer shipRenderer;
+	private List<HangerSystemRenderer> systemRenderers;
 	private Ship ship;
 	
 	private int difficulty = 1;
@@ -60,6 +62,14 @@ public class HangerScreen implements FTLScreen
 		
 		shipRenderer = new ShipRenderer(ship);
 		shipRenderer.setInteractive(false);
+		
+		systemRenderers = new ArrayList<HangerSystemRenderer>();
+		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "health", "command", "sensors", "doors"};
+		for(String system : systemNames)
+		{
+			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
+		}
+		
 		buttons = new ArrayList<Button>();
 		
 		Texture easyOn = TextureRegistry.registerSprite("button_easy_on", "customizeUI/button_easy_on");
@@ -67,6 +77,7 @@ public class HangerScreen implements FTLScreen
 		bEasy = new DifficultyButton(this, 0, 977, 682, easyOn);
 		bEasy.setDownImage(easyOff);
 		bEasy.setHoverImage(easyOff);
+		bEasy.setSelected(true);
 		buttons.add(bEasy);
 		
 		Texture normalOn = TextureRegistry.registerSprite("button_normal_on", "customizeUI/button_normal_on");
@@ -154,6 +165,8 @@ public class HangerScreen implements FTLScreen
 		bHideRooms.setHoverImage(hideRoomsSelect);
 		bHideRooms.setDownImage(hideRoomsSelect);
 		buttons.add(bHideRooms);
+		
+		
 	}
 
 	@Override
@@ -168,6 +181,13 @@ public class HangerScreen implements FTLScreen
 		batch.draw(background, 0, 0);
 		shipRenderer.render(batch, ship, 365, 410);
 
+		int i = 0;
+		for(HangerSystemRenderer renderer : systemRenderers)
+		{
+			renderer.render(batch, 373 + i * 38, 244);
+			i++;
+		}
+		
 		for(Button button : buttons)
 			button.render(batch);
 		

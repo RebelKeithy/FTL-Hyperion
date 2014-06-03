@@ -43,6 +43,9 @@ public class CrewBox
 			batch.draw(new TextureRegion(crewSlot, 0, 45, 100, 22), offsetX, offsetY-19);
 			batch.draw(crewSlot, offsetX, offsetY);
 		}
+		
+		Texture texture = TextureRegistry.registerSprite("human_base", "people/human_base");
+		batch.draw(new TextureRegion(texture,  0,  0, 35, 35), offsetX + 16, offsetY + 4, 70, 70);
 
 		Color color = Fonts.font8.getColor();
 		if(mouseX > offsetX && mouseX < offsetX + 100 && mouseY > offsetY + 4 && mouseY < offsetY + 18)

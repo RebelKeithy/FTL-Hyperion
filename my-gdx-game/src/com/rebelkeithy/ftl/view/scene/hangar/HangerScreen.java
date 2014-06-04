@@ -44,9 +44,9 @@ public class HangerScreen implements FTLScreen
 	private Button bList;
 	private Button bRandomShip;
 	
-	private Button bA;
-	private Button bB;
-	private Button bC;
+	private LayoutSelectButton bA;
+	private LayoutSelectButton bB;
+	private LayoutSelectButton bC;
 	private Button bHideRooms;
 	
 	public HangerScreen()
@@ -61,32 +61,6 @@ public class HangerScreen implements FTLScreen
 		batch = new SpriteBatch();
 		
 		background = TextureRegistry.registerSprite("custom_main", "customizeUI/custom_main");
-		ship = ShipRegistry.build("The Torus", "Player");
-		ship.getSystem("oxygen").addPower(1);
-		ship.getSystem("engines").addPower(1);
-		
-		shipRenderer = new ShipRenderer(ship);
-		shipRenderer.setOffset(365, 410);
-		shipRenderer.setInteractive(false);
-		
-		systemRenderers = new ArrayList<HangerSystemRenderer>();
-		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "health", "command", "sensors", "doors"};
-		for(String system : systemNames)
-		{
-			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
-		}
-		
-		weapons = new ArrayList<WeaponItemBox>();
-		if(ship.getSystem("weapons") != null)
-		{
-			WeaponSystem weaponSystem = (WeaponSystem) ship.getSystem("weapons");
-			for(int i = 0; i < 4; i++)
-			{
-				weapons.add(new WeaponItemBox(weaponSystem.getWeapon(i)));
-			}
-		}
-		
-		crewBox = new CrewBox();
 		
 		buttons = new ArrayList<Button>();
 		
@@ -114,7 +88,7 @@ public class HangerScreen implements FTLScreen
 		
 		Texture startOn = TextureRegistry.registerSprite("button_start_on", "customizeUI/button_start_on");
 		Texture startSelect = TextureRegistry.registerSprite("button_start_select2", "customizeUI/button_start_select2");
-		bStart = new StartButton(1082, 644, startOn);
+		bStart = new StartButton(this, 1082, 644, startOn);
 		bStart.setDownImage(startSelect);
 		bStart.setHoverImage(startSelect);
 		buttons.add(bStart);
@@ -153,7 +127,7 @@ public class HangerScreen implements FTLScreen
 		Texture aOn = TextureRegistry.registerSprite("button_layouta_on", "customizeUI/button_layouta_on");
 		Texture aOff = TextureRegistry.registerSprite("button_layouta_off", "customizeUI/button_layouta_off");
 		Texture aSelect = TextureRegistry.registerSprite("button_layouta_select2", "customizeUI/button_layouta_select2");
-		bA = new Button(32, 438, aOn);
+		bA = new LayoutSelectButton(this, 32, 438, aOn);
 		bA.setHoverImage(aSelect);
 		bA.setDownImage(aSelect);
 		bA.setDisabledImage(aOff);
@@ -162,7 +136,7 @@ public class HangerScreen implements FTLScreen
 		Texture bOn = TextureRegistry.registerSprite("button_layoutb_on", "customizeUI/button_layoutb_on");
 		Texture bOff = TextureRegistry.registerSprite("button_layoutb_off", "customizeUI/button_layoutb_off");
 		Texture bSelect = TextureRegistry.registerSprite("button_layoutb_select2", "customizeUI/button_layoutb_select2");
-		bB = new Button(77, 438, bOn);
+		bB = new LayoutSelectButton(this, 77, 438, bOn);
 		bB.setHoverImage(bSelect);
 		bB.setDownImage(bSelect);
 		bB.setDisabledImage(bOff);
@@ -171,7 +145,7 @@ public class HangerScreen implements FTLScreen
 		Texture cOn = TextureRegistry.registerSprite("button_layoutc_on", "customizeUI/button_layoutc_on");
 		Texture cOff = TextureRegistry.registerSprite("button_layoutc_off", "customizeUI/button_layoutc_off");
 		Texture cSelect = TextureRegistry.registerSprite("button_layoutc_select2", "customizeUI/button_layoutc_select2");
-		bC = new Button(122, 438, cOn);
+		bC = new LayoutSelectButton(this, 122, 438, cOn);
 		bC.setHoverImage(cSelect);
 		bC.setDownImage(cSelect);
 		bC.setDisabledImage(cOff);
@@ -184,7 +158,36 @@ public class HangerScreen implements FTLScreen
 		bHideRooms.setDownImage(hideRoomsSelect);
 		buttons.add(bHideRooms);
 		
+		// Text code
+		bA.setShip("The Kestrel");
+		bB.setShip("Red-Tail");
+		bC.setShip("The Torus");;
+
+		// Create the ship
+		setShip(bA);
 		
+		shipRenderer = new ShipRenderer(ship);
+		shipRenderer.setOffset(365, 410);
+		shipRenderer.setInteractive(false);
+		
+		systemRenderers = new ArrayList<HangerSystemRenderer>();
+		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "health", "command", "sensors", "doors"};
+		for(String system : systemNames)
+		{
+			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
+		}
+		
+		weapons = new ArrayList<WeaponItemBox>();
+		if(ship.getSystem("weapons") != null)
+		{
+			WeaponSystem weaponSystem = (WeaponSystem) ship.getSystem("weapons");
+			for(int i = 0; i < 4; i++)
+			{
+				weapons.add(new WeaponItemBox(weaponSystem.getWeapon(i)));
+			}
+		}
+		
+		crewBox = new CrewBox();
 	}
 
 	@Override
@@ -294,6 +297,27 @@ public class HangerScreen implements FTLScreen
 			bNormal.setSelected(true);
 		if(difficulty == 2)
 			bHard.setSelected(true);
+	}
+
+	public Ship getShip() 
+	{
+		return ship;
+	}
+
+	public void setShip(LayoutSelectButton button) 
+	{
+		bA.setSelected(false);
+		bB.setSelected(false);
+		bC.setSelected(false);
+		button.setSelected(true);
+		
+		ship = ShipRegistry.build(button.getShip(), button.getShip());
+		
+		if(ship.getSystem("oxygen") != null)
+			ship.getSystem("oxygen").addPower(1);
+
+		if(ship.getSystem("engines") != null)
+			ship.getSystem("engines").addPower(1);
 	}
 
 }

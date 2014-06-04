@@ -116,7 +116,8 @@ public class GameScreen implements FTLScreen
 	public void show() 
 	{				
 		//Ship player = ShipRegistry.build("The Kestrel", "Player");
-		Ship player = ShipRegistry.build("Red-Tail", "The Kestrel");
+		//Ship player = ShipRegistry.build("Red-Tail", "The Kestrel");
+		Ship player = FTLGame.instance().getPlayer();
 		player.setPlayer(true);
 		
 		FTLGame.instance().addShip(player, 0, 0);	

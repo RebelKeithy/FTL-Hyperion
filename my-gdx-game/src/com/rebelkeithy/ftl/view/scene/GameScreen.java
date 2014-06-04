@@ -85,7 +85,7 @@ public class GameScreen implements FTLScreen
 			
 			Ship ship = FTLGame.instance().getPlayer();
 			
-			playerRenderer.render(batch, ship, 350, 270);
+			playerRenderer.render(batch, ship);
 			playerUIRenderer.renderFirstLayer(batch, ship);
 
 			batch.setColor(1, 1, 1, 0.8f);
@@ -128,6 +128,7 @@ public class GameScreen implements FTLScreen
 		
 		playerRenderer = new ShipRenderer(player);
 		playerRenderer.setInteractive(true);
+		playerRenderer.setOffset(350, 270);
 		playerUIRenderer = new ShipUIRenderer();
 		playerUIRenderer.init();
 

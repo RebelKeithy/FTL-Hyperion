@@ -133,6 +133,7 @@
             }
         },
         "IonBlastMkII": {
+            "name": "Ion Blast II",
             "power": 3,
             "cooldown": 4,
             "damage": {

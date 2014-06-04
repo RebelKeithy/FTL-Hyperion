@@ -16,7 +16,6 @@ import com.rebelkeithy.ftl.view.Button;
 import com.rebelkeithy.ftl.view.CrewBox;
 import com.rebelkeithy.ftl.view.ShipRenderer;
 import com.rebelkeithy.ftl.view.TextureRegistry;
-import com.rebelkeithy.ftl.view.WeaponBox;
 import com.rebelkeithy.ftl.view.WeaponItemBox;
 import com.rebelkeithy.ftl.view.scene.FTLScreen;
 
@@ -67,6 +66,7 @@ public class HangerScreen implements FTLScreen
 		ship.getSystem("engines").addPower(1);
 		
 		shipRenderer = new ShipRenderer(ship);
+		shipRenderer.setOffset(365, 410);
 		shipRenderer.setInteractive(false);
 		
 		systemRenderers = new ArrayList<HangerSystemRenderer>();
@@ -197,7 +197,7 @@ public class HangerScreen implements FTLScreen
 		batch.begin();
 		
 		batch.draw(background, 0, 0);
-		shipRenderer.render(batch, ship, 365, 410);
+		shipRenderer.render(batch, ship);
 
 		int i = 0;
 		for(HangerSystemRenderer renderer : systemRenderers)

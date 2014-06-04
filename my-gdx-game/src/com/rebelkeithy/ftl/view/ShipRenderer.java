@@ -24,6 +24,8 @@ public class ShipRenderer
 	Ship ship;
 	Set<Sprite> rooms;
 	
+	int offsetX;
+	int offsetY;
 	int shipOffsetX = 350;
 	int shipOffsetY = 270;
 	
@@ -48,8 +50,8 @@ public class ShipRenderer
 		roomRenderer = new RoomRenderer();
 		crewRenderer = new CrewRenderer("human_base", "human_glow");
 
-		shipOffsetX = 350 + ship.renderData.offsetX;
-		shipOffsetY = 270 + ship.renderData.offsetY;
+		shipOffsetX = ship.renderData.offsetX;
+		shipOffsetY = ship.renderData.offsetY;
 		shipTextureOffsetX = ship.renderData.shipTextureOffsetX;
 		shipTextureOffsetY = ship.renderData.shipTextureOffsetY;
 		roomTextureOffsetX = ship.renderData.roomTextureOffsetX;
@@ -89,10 +91,16 @@ public class ShipRenderer
 		
 	}
 	
-	public void render(SpriteBatch batch, Ship ship, int shipOffsetX, int shipOffsetY)
+	public void setOffset(int offsetX, int offsetY)
+	{
+		this.offsetX = offsetX;
+		this.offsetY = offsetY;
+	}
+	
+	public void render(SpriteBatch batch, Ship ship)
 	{		
-		this.shipOffsetX = shipOffsetX;
-		this.shipOffsetY = shipOffsetY;
+		int totalShipOffsetX = shipOffsetX + offsetX;
+		int totalShipOffsetY = shipOffsetY + offsetY;
 		//Matrix4 m = batch.getProjectionMatrix();
 		//Matrix4 m_saved = m.cpy();
 		
@@ -108,12 +116,12 @@ public class ShipRenderer
 		{
 			float alpha = 0.5f + 0.12f * (shieldLvl-1);
 			batch.setColor(1, 1, 1, alpha);
-			batch.draw(shieldImage, shipOffsetX + shieldOffsetX, shipOffsetY + shieldOffsetY);
+			batch.draw(shieldImage, totalShipOffsetX + shieldOffsetX, totalShipOffsetY + shieldOffsetY);
 			batch.setColor(1, 1, 1, 1);
 		}
 		
 		Texture texture = TextureRegistry.getTexture(ship.renderData.texture);
-		batch.draw(texture, shipOffsetX + shipTextureOffsetX, shipOffsetY + shipTextureOffsetY);
+		batch.draw(texture, totalShipOffsetX + shipTextureOffsetX, totalShipOffsetY + shipTextureOffsetY);
 
 		if(ship.getSystem("engines").isPowered() && ship.getSystem("command").isManned())
 		{
@@ -123,24 +131,24 @@ public class ShipRenderer
 			
 			for(int i = 0; i < ship.renderData.thrusterX.length; i++)
 			{
-				batch.draw(thrustersRegion, shipOffsetX + ship.renderData.thrusterX[i], shipOffsetY + ship.renderData.thrusterY[i]);
+				batch.draw(thrustersRegion, totalShipOffsetX + ship.renderData.thrusterX[i], totalShipOffsetY + ship.renderData.thrusterY[i]);
 			}
 		}
 		
 		texture = TextureRegistry.getTexture(ship.renderData.roomTexture);
-		batch.draw(texture, shipOffsetX + roomTextureOffsetX, shipOffsetY + roomTextureOffsetY);
+		batch.draw(texture, totalShipOffsetX + roomTextureOffsetX, totalShipOffsetY + roomTextureOffsetY);
 
 		
 		for(Room room : ship.getRooms().values())
 		{
-			roomRenderer.render(batch, room, shipOffsetX, shipOffsetY);
+			roomRenderer.render(batch, room, totalShipOffsetX, totalShipOffsetY);
 		}
 		
 		for(Room room : ship.getRooms().values())
 		{
 			for(Door door : room.getDoors())
 			{
-				DoorRenderer.getRenderer(door).render(batch, door, shipOffsetX, shipOffsetY);
+				DoorRenderer.getRenderer(door).render(batch, door, totalShipOffsetX, totalShipOffsetY);
 			}
 		}
 		
@@ -150,7 +158,7 @@ public class ShipRenderer
 			{
 				CrewRenderer.registerCrewRenderer(member, new CrewRenderer("human_base", "human_glow"));
 			}
-			CrewRenderer.getCrewRenderer(member).render(batch, member, shipOffsetX, shipOffsetY);
+			CrewRenderer.getCrewRenderer(member).render(batch, member, totalShipOffsetX, totalShipOffsetY);
 		}
 		
 		

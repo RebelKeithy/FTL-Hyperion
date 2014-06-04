@@ -164,28 +164,7 @@ public class HangerScreen implements FTLScreen
 		bC.setShip("The Torus");;
 
 		// Create the ship
-		setShip(bA);
-		
-		shipRenderer = new ShipRenderer(ship);
-		shipRenderer.setOffset(365, 410);
-		shipRenderer.setInteractive(false);
-		
-		systemRenderers = new ArrayList<HangerSystemRenderer>();
-		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "health", "command", "sensors", "doors"};
-		for(String system : systemNames)
-		{
-			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
-		}
-		
-		weapons = new ArrayList<WeaponItemBox>();
-		if(ship.getSystem("weapons") != null)
-		{
-			WeaponSystem weaponSystem = (WeaponSystem) ship.getSystem("weapons");
-			for(int i = 0; i < 4; i++)
-			{
-				weapons.add(new WeaponItemBox(weaponSystem.getWeapon(i)));
-			}
-		}
+		setShip(bC);
 		
 		crewBox = new CrewBox();
 	}
@@ -318,6 +297,27 @@ public class HangerScreen implements FTLScreen
 
 		if(ship.getSystem("engines") != null)
 			ship.getSystem("engines").addPower(1);
+
+		shipRenderer = new ShipRenderer(ship);
+		shipRenderer.setOffset(365, 410);
+		shipRenderer.setInteractive(false);
+		
+		systemRenderers = new ArrayList<HangerSystemRenderer>();
+		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "health", "command", "sensors", "doors"};
+		for(String system : systemNames)
+		{
+			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));
+		}
+		
+		weapons = new ArrayList<WeaponItemBox>();
+		if(ship.getSystem("weapons") != null)
+		{
+			WeaponSystem weaponSystem = (WeaponSystem) ship.getSystem("weapons");
+			for(int i = 0; i < 4; i++)
+			{
+				weapons.add(new WeaponItemBox(weaponSystem.getWeapon(i)));
+			}
+		}
 	}
 
 }

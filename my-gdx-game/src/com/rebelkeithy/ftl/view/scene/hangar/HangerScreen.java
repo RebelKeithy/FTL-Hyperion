@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,6 +26,7 @@ public class HangerScreen implements FTLScreen
 	private SpriteBatch batch;
 	
 	private Texture background;
+	private Texture black;
 	private ShipRenderer shipRenderer;
 	private List<HangerSystemRenderer> systemRenderers;
 	private List<WeaponItemBox> weapons;
@@ -32,6 +34,8 @@ public class HangerScreen implements FTLScreen
 	private Ship ship;
 	
 	private int difficulty = 1;
+	
+	private ListGUI listGui;
 	
 	private List<Button> buttons;
 	private DifficultyButton bEasy;
@@ -61,6 +65,10 @@ public class HangerScreen implements FTLScreen
 		batch = new SpriteBatch();
 		
 		background = TextureRegistry.registerSprite("custom_main", "customizeUI/custom_main");
+		black = TextureRegistry.getTexture("black");
+		
+		listGui = new ListGUI(this);
+		listGui.show(false);
 		
 		buttons = new ArrayList<Button>();
 		
@@ -110,7 +118,7 @@ public class HangerScreen implements FTLScreen
 		
 		Texture listOn = TextureRegistry.registerSprite("button_list_on", "customizeUI/button_list_on");
 		Texture listSelect = TextureRegistry.registerSprite("button_list_select2", "customizeUI/button_list_select2");
-		bList = new Button(64, 547, listOn);
+		bList = new ListButton(this, 64, 547, listOn);
 		bList.setHoverImage(listSelect);
 		bList.setDownImage(listSelect);
 		buttons.add(bList);
@@ -209,6 +217,14 @@ public class HangerScreen implements FTLScreen
 			}
 		}
 		
+		if(listGui.show())
+		{
+			batch.setColor(1, 1, 1, 0.8f);
+			batch.draw(black, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			batch.setColor(Color.WHITE);
+			listGui.render(batch);
+		}
+		
 		batch.end();
 	}
 
@@ -251,6 +267,10 @@ public class HangerScreen implements FTLScreen
 	@Override
 	public boolean click(int screenX, int screenY, int button) 
 	{
+		if(listGui.show())
+			if(listGui.click(screenX, screenY, button))
+				return true;
+		
 		for(Button b : buttons)
 			if(b.click(screenX, screenY, button))
 				return true;
@@ -318,6 +338,11 @@ public class HangerScreen implements FTLScreen
 				weapons.add(new WeaponItemBox(weaponSystem.getWeapon(i)));
 			}
 		}
+	}
+
+	public void showListGUI() 
+	{
+		listGui.show(true);
 	}
 
 }

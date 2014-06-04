@@ -1,6 +1,7 @@
 {
     "name": "EngiA",
 	"texture": "circle_cruiser_base",
+	"miniship_texture": "miniship_circle_cruiser",
 	"roomtexture": "circle_cruiser_floor",
     "shieldimage": "circle_cruiser_shields1",
 	"offsetX": 105,

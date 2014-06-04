@@ -1,6 +1,7 @@
 {
     "name": "KestrelA",
 	"texture": "kestral_base",
+	"miniship_texture": "miniship_kestral",
 	"roomtexture": "kestral_floor",
     "shieldimage": "kestral_shields1",
 	"offsetX": 0,

@@ -310,7 +310,12 @@ public class HangerScreen implements FTLScreen
 		bC.setSelected(false);
 		button.setSelected(true);
 		
-		ship = ShipRegistry.build(button.getShip(), button.getShip());
+		setShip(ShipRegistry.build(button.getShip(), button.getShip()));
+	}
+
+	public void setShip(Ship newShip) 
+	{
+		this.ship = newShip;
 		
 		if(ship.getSystem("oxygen") != null)
 			ship.getSystem("oxygen").addPower(1);
@@ -343,6 +348,12 @@ public class HangerScreen implements FTLScreen
 	public void showListGUI() 
 	{
 		listGui.show(true);
+	}
+
+	public void choostFromList(Ship ship) 
+	{
+		listGui.show(false);
+		setShip(ship);
 	}
 
 }

@@ -3,7 +3,8 @@ package com.rebelkeithy.ftl.ship;
 
 public class ShipRenderData 
 {
-	public String texture;
+	public String shipTexture;
+	public String miniShipTexture;
 	public String roomTexture;
 	public int offsetX;
 	public int offsetY;

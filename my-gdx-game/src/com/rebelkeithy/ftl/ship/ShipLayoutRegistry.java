@@ -49,10 +49,12 @@ public class ShipLayoutRegistry
 		// Render data
 		String image = (String) root.get("texture");
 		TextureRegistry.registerSprite(image, "ship/" + image);
-		ship.renderData.texture = image;
+		ship.renderData.shipTexture = image;
+		ship.renderData.miniShipTexture = (String) root.get("miniship_texture");
+		TextureRegistry.registerSprite(ship.renderData.miniShipTexture, "customizeUI/" + ship.renderData.miniShipTexture);
 		ship.renderData.roomTexture = (String) root.get("roomtexture");
 		TextureRegistry.registerSprite(ship.renderData.roomTexture, "ship/" + ship.renderData.roomTexture);
-		ship.renderData.texture = image;
+		ship.renderData.shipTexture = image;
 		ship.renderData.shieldTexture = (String) root.get("shieldimage");
 		TextureRegistry.registerSprite(ship.renderData.shieldTexture, "ship/" + ship.renderData.shieldTexture);
 		ship.renderData.offsetX = ((Double)root.get("offsetX")).intValue();

@@ -120,7 +120,7 @@ public class ShipRenderer
 			batch.setColor(1, 1, 1, 1);
 		}
 		
-		Texture texture = TextureRegistry.getTexture(ship.renderData.texture);
+		Texture texture = TextureRegistry.getTexture(ship.renderData.shipTexture);
 		batch.draw(texture, totalShipOffsetX + shipTextureOffsetX, totalShipOffsetY + shipTextureOffsetY);
 
 		if(ship.getSystem("engines").isPowered() && ship.getSystem("command").isManned())

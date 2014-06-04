@@ -67,9 +67,14 @@ public class ListGUI extends GUI
 		Ship kestrel = ShipRegistry.build("The Kestrel", "The Kestrel");
 		shipButtons[0][0] = new ShipButton(this, kestrel, offsetX + 24, offsetY + 240);
 		this.addButton(shipButtons[0][0]);
+		
 		Ship engi = ShipRegistry.build("The Torus", "The Torus");
-		shipButtons[0][1] = new ShipButton(this, engi, offsetX + 229, offsetY + 240);
+		shipButtons[0][1] = new ShipButton(this, engi, offsetX + 24 + 205, offsetY + 240);
 		this.addButton(shipButtons[0][1]);
+		
+		Ship engiB = ShipRegistry.build("The Vortex", "The Vortex");
+		shipButtons[0][2] = new ShipButton(this, engiB, offsetX + 24 + 205*2, offsetY + 240);
+		this.addButton(shipButtons[0][2]);
 	}
 	
 	public void render(SpriteBatch batch)
@@ -84,6 +89,7 @@ public class ListGUI extends GUI
 			
 			shipButtons[0][0].render(batch);
 			shipButtons[0][1].render(batch);
+			shipButtons[0][2].render(batch);
 		}
 	}
 

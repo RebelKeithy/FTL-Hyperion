@@ -1,0 +1,91 @@
+{
+    "name": "The Torus",
+    "layout": "EngiA",
+    "systems": {
+        "reactor": {
+            "power": 32,
+            "cost": [ 120, 30, 30, 30, 30, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 30, 30, 30, 35, 35, 35, 35, 35 ]
+        },
+        "engines": {
+            "room": "room1",
+            "stationX": 0,
+            "stationY": 0,
+            "direction": "down",
+            "power": 2,
+            "cost": [ 50, 10, 15, 30, 40, 60, 80, 120 ]
+        },
+        "shields": {
+            "room": "room4",
+            "stationX": 0,
+            "stationY": 1,
+            "direction": "left",
+            "power": 2,
+            "cost": [ 50, 100, 20, 30, 40, 60, 80, 100 ]
+        },
+        "oxygen": {
+            "room": "room5",
+            "power": 1,
+            "cost": [ 50, 25, 50 ]
+        },
+        "weapons": {
+            "room": "room14",
+            "stationX": 1,
+            "stationY": 1,
+            "direction": "up",
+            "power": 3,
+            "cost": [ 20, 60, 25, 35, 50, 75, 90, 100 ]
+        },
+        "health": {
+            "room": "room12",
+            "power": 1,
+            "cost": [ 60, 35, 45 ]
+        },
+        "sensors": {
+            "room": "room9",
+            "stationX": 0,
+            "stationY": 0,
+            "direction": "left",
+            "power": 1,
+            "cost": [ 40, 25, 40 ]
+        },
+        "doors": {
+            "room": "room8",
+            "stationX": 0,
+            "stationY": 1,
+            "direction": "right",
+            "power": 1,
+            "cost": [ 60, 35, 50 ]
+        },
+        "command": {
+            "room": "room16",
+            "stationX": 0,
+            "stationY": 1,
+            "direction": "right",
+            "power": 1,
+            "cost": [ 50, 20, 50 ]
+        }
+    },
+    "resources": {
+        "fuel": 16,
+        "missiles": 0,
+        "drones": 15,
+        "scrap": 30
+    },
+    "crew": {
+        "Bob": {
+            "room": "room16",
+            "race": "Human"
+        },
+        "Larry": {
+            "room": "room1",
+            "race": "Engi"
+        },
+        "Steve": {
+            "room": "room14",
+            "race": "Engi"
+        }
+    },
+    "weapons": [
+        "IonBlastMkII"
+    ]
+}

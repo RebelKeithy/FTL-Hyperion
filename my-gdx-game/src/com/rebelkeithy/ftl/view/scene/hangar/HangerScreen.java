@@ -62,7 +62,7 @@ public class HangerScreen implements FTLScreen
 		batch = new SpriteBatch();
 		
 		background = TextureRegistry.registerSprite("custom_main", "customizeUI/custom_main");
-		ship = ShipRegistry.build("The Kestrel", "Player");
+		ship = ShipRegistry.build("The Torus", "Player");
 		ship.getSystem("oxygen").addPower(1);
 		ship.getSystem("engines").addPower(1);
 		

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.view.Button;
 import com.rebelkeithy.ftl.view.FTLView;
-import com.rebelkeithy.ftl.view.scene.GameScreen;
+import com.rebelkeithy.ftl.view.scene.SpaceScreen;
 
 public class StartButton extends Button
 {
@@ -19,6 +19,6 @@ public class StartButton extends Button
 	public void leftClick()
 	{
 		FTLGame.instance().setPlayer(hanger.getShip());
-		FTLView.instance().setScreen(new GameScreen());
+		FTLView.instance().setScreen(new SpaceScreen());
 	}
 }

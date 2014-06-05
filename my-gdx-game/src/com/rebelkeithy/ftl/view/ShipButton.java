@@ -1,7 +1,7 @@
 package com.rebelkeithy.ftl.view;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.rebelkeithy.ftl.view.scene.GameScreen;
+import com.rebelkeithy.ftl.view.scene.SpaceScreen;
 
 public class ShipButton extends Button
 {
@@ -13,8 +13,8 @@ public class ShipButton extends Button
 
 	public void leftClick()
 	{
-		if(FTLView.instance().getScreen() instanceof GameScreen)
-			((GameScreen)FTLView.instance().getScreen()).openUpgradeGUI();
+		if(FTLView.instance().getScreen() instanceof SpaceScreen)
+			((SpaceScreen)FTLView.instance().getScreen()).openUpgradeGUI();
 		
 	}
 }

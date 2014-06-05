@@ -26,8 +26,8 @@ public class ShipRenderer
 	
 	int offsetX;
 	int offsetY;
-	int shipOffsetX = 350;
-	int shipOffsetY = 270;
+	int shipOffsetX;
+	int shipOffsetY;
 	
 	int shipTextureOffsetX = 0;
 	int shipTextureOffsetY = 0;
@@ -172,8 +172,8 @@ public class ShipRenderer
 		for(int i = 0; i < ship.getCrew().size(); i++)
 		{
 			Crew member = ship.getCrew().get(i);
-			int crewX = (int) (member.getX() * 35 + shipOffsetX);
-			int crewY = (int) (member.getY() * 35 + shipOffsetY);
+			int crewX = (int) (member.getX() * 35 + shipOffsetX + offsetX);
+			int crewY = (int) (member.getY() * 35 + shipOffsetY + offsetY);
 			
 			if(button == 0 && screenX > crewX && screenX < crewX + 35 && screenY > crewY && screenY < crewY + 35)
 			{
@@ -190,8 +190,8 @@ public class ShipRenderer
 		{
 			for(Room room : ship.getRooms().values())
 			{
-				int roomX = room.getX() * 35 + shipOffsetX;
-				int roomY = room.getY() * 35 + shipOffsetY;
+				int roomX = room.getX() * 35 + shipOffsetX + offsetX;
+				int roomY = room.getY() * 35 + shipOffsetY + offsetY;
 				
 	
 				if(screenX > roomX && screenX < roomX + room.getWidth()*35 && screenY > roomY && screenY < roomY + room.getHeight()*35)
@@ -222,8 +222,8 @@ public class ShipRenderer
 			{
 				for(Door door : room.getDoors())
 				{
-					int doorX = (int) (door.getX() * 35 + shipOffsetX);
-					int doorY = (int) (door.getY() * 35 + shipOffsetY);
+					int doorX = (int) (door.getX() * 35 + shipOffsetX + offsetX);
+					int doorY = (int) (door.getY() * 35 + shipOffsetY + offsetY);
 					
 					int shrinkH = 5;
 					int shrinkV = 10;

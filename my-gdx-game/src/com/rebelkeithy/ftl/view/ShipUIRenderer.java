@@ -19,7 +19,7 @@ import com.rebelkeithy.ftl.systems.AbstractShipSystem;
 import com.rebelkeithy.ftl.systems.CommandSystem;
 import com.rebelkeithy.ftl.systems.ShieldSystem;
 import com.rebelkeithy.ftl.view.events.RenderScrap;
-import com.rebelkeithy.ftl.view.scene.GameScreen;
+import com.rebelkeithy.ftl.view.scene.SpaceScreen;
 
 public class ShipUIRenderer 
 {
@@ -326,7 +326,7 @@ public class ShipUIRenderer
 		batch.flush();
 		Rectangle scissors = new Rectangle();
 		Rectangle clipBounds = new Rectangle(536, 603, 74, 46);
-		ScissorStack.calculateScissors(((GameScreen)FTLView.instance().getScreen()).camera, batch.getTransformMatrix(), clipBounds, scissors);
+		ScissorStack.calculateScissors(((SpaceScreen)FTLView.instance().getScreen()).camera, batch.getTransformMatrix(), clipBounds, scissors);
 		ScissorStack.pushScissors(scissors);
 		if(ftlPulloutTimer > 0)
 		{

@@ -19,7 +19,7 @@ import com.rebelkeithy.ftl.view.TextureRegistry;
 import com.rebelkeithy.ftl.view.ToolTip;
 import com.rebelkeithy.ftl.view.upgrade.UpgradeUI;
 
-public class GameScreen implements FTLScreen
+public class SpaceScreen implements FTLScreen
 {
 	public OrthographicCamera camera;
 	private SpriteBatch batch;
@@ -34,7 +34,7 @@ public class GameScreen implements FTLScreen
 
 	public static boolean stop = false;
 	
-	public GameScreen()
+	public SpaceScreen()
 	{
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
@@ -133,12 +133,12 @@ public class GameScreen implements FTLScreen
 		playerUIRenderer = new ShipUIRenderer();
 		playerUIRenderer.init();
 
-		GameScreen.stop = false;
+		SpaceScreen.stop = false;
 		Thread thread = new Thread() 
 		{	
 			public void run()
 			{
-				while(!GameScreen.stop)
+				while(!SpaceScreen.stop)
 				{
 					float tps = 60;
 					Clock.instance().update(1/tps);
@@ -161,7 +161,7 @@ public class GameScreen implements FTLScreen
 	@Override
 	public void hide() 
 	{
-		GameScreen.stop = true;
+		SpaceScreen.stop = true;
 	}
 
 	@Override

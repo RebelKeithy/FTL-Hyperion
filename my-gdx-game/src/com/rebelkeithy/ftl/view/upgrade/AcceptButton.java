@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.rebelkeithy.ftl.view.Button;
 import com.rebelkeithy.ftl.view.FTLView;
 import com.rebelkeithy.ftl.view.GUI;
-import com.rebelkeithy.ftl.view.scene.GameScreen;
+import com.rebelkeithy.ftl.view.scene.SpaceScreen;
 
 public class AcceptButton extends Button 
 {
@@ -28,7 +28,7 @@ public class AcceptButton extends Button
 	{
 		gui.accept();
 		
-		if(FTLView.instance().getScreen() instanceof GameScreen)
-			((GameScreen)FTLView.instance().getScreen()).closeGui();
+		if(FTLView.instance().getScreen() instanceof SpaceScreen)
+			((SpaceScreen)FTLView.instance().getScreen()).closeGui();
 	}
 }

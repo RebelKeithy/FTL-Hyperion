@@ -3,7 +3,7 @@ package com.rebelkeithy.ftl.view;
 import com.badlogic.gdx.graphics.Texture;
 import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.view.crew.CrewUI;
-import com.rebelkeithy.ftl.view.scene.GameScreen;
+import com.rebelkeithy.ftl.view.scene.SpaceScreen;
 
 public class CrewTabButton extends Button
 {
@@ -15,9 +15,9 @@ public class CrewTabButton extends Button
 	@Override
 	public void leftClick()
 	{
-		if(FTLView.instance().getScreen() instanceof GameScreen)
+		if(FTLView.instance().getScreen() instanceof SpaceScreen)
 		{
-			((GameScreen)FTLView.instance().getScreen()).openGUI(new CrewUI(FTLGame.instance().getPlayer()));
+			((SpaceScreen)FTLView.instance().getScreen()).openGUI(new CrewUI(FTLGame.instance().getPlayer()));
 		}
 	}
 }

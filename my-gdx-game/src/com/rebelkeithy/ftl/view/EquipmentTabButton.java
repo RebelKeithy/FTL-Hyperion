@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.view.equipment.EquipmentUI;
-import com.rebelkeithy.ftl.view.scene.GameScreen;
+import com.rebelkeithy.ftl.view.scene.SpaceScreen;
 
 public class EquipmentTabButton extends Button
 {
@@ -16,7 +16,7 @@ public class EquipmentTabButton extends Button
 	@Override
 	public void leftClick()
 	{
-		if(FTLView.instance().getScreen() instanceof GameScreen)
-			((GameScreen)FTLView.instance().getScreen()).openGUI(new EquipmentUI(FTLGame.instance().getPlayer()));
+		if(FTLView.instance().getScreen() instanceof SpaceScreen)
+			((SpaceScreen)FTLView.instance().getScreen()).openGUI(new EquipmentUI(FTLGame.instance().getPlayer()));
 	}
 }

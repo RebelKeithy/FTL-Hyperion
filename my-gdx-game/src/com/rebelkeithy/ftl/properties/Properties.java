@@ -28,6 +28,11 @@ public class Properties
 		properties.put(name, value);
 	}
 	
+	public void setBoolean(String name, boolean value)
+	{
+		properties.put(name, value);
+	}
+	
 	public void setProperty(String name, Properties property)
 	{
 		properties.put(name, property);
@@ -52,6 +57,14 @@ public class Properties
 		if(properties.containsKey(name))	
 			return (String)properties.get(name);
 		return "";
+	}
+
+	public boolean getBoolean(String string) 
+	{
+		if(properties.containsKey(string))
+			return (Boolean) properties.get(string);
+		
+		return false;
 	}
 	
 	public Properties getProperty(String name)

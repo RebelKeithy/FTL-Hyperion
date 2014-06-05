@@ -1,7 +1,12 @@
 package com.rebelkeithy.ftl.view.scene;
 
+import com.rebelkeithy.ftl.ship.Ship;
+import com.rebelkeithy.ftl.view.ShipRenderer;
+
 public class BattleScreen extends SpaceScreen
 {
+	private Ship enemy;
+	//private ShipEnemyRenderer enemyRenderer
 
 	@Override
 	public void render(float delta) 

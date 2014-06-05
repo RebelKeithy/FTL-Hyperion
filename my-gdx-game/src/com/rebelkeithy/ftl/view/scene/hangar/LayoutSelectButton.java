@@ -8,9 +8,9 @@ public class LayoutSelectButton extends ButtonToggleable
 	private HangerScreen hanger;
 	private String shipName;
 	
-	public LayoutSelectButton(HangerScreen hanger, int x, int y, Texture autofire_up) 
+	public LayoutSelectButton(HangerScreen hanger, int x, int y, Texture image_up) 
 	{
-		super(x, y, autofire_up);
+		super(x, y, image_up);
 		this.hanger = hanger;
 	}
 	

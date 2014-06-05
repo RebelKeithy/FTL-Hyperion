@@ -1,5 +1,6 @@
 package com.rebelkeithy.ftl.view.scene.hangar;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rebelkeithy.ftl.ship.Ship;
@@ -44,31 +45,51 @@ public class ShipButton extends Button
 		challenge3Off = TextureRegistry.registerSprite("S_3_off", "achievements/S_3_off");
 		
 		if(ship != null)
+		{
 			miniShip = TextureRegistry.getTexture(ship.renderData.miniShipTexture);
+			this.setDisabled(false);
+		}
+		else
+		{
+			this.setDisabled(true);
+		}
 	}
 	
 	public void render(SpriteBatch batch)
 	{
-		super.render(batch);
 		
-		batch.draw(miniShip, imageX, imageY);
-		
-		if(hover)
+		if(ship != null)
 		{
-			batch.draw(buttonsSelect, imageX, imageY - 40);
+			super.render(batch);
+			
+			batch.draw(miniShip, imageX, imageY);
+			
+			if(hover)
+			{
+				batch.draw(buttonsSelect, imageX, imageY - 40);
+			}
+			else
+			{
+				batch.draw(buttonsOn, imageX, imageY - 40);
+			}
+			
+			batch.draw(challenge1Off, imageX + 6, imageY - 34);
+			batch.draw(challenge2Off, imageX + 43, imageY - 34);
+			batch.draw(challenge3Off, imageX + 80, imageY - 34);
 		}
 		else
 		{
-			batch.draw(buttonsOn, imageX, imageY - 40);
+			batch.draw(image_disabled, imageX, imageY - 17);
 		}
-		
-		batch.draw(challenge1Off, imageX + 6, imageY - 34);
-		batch.draw(challenge2Off, imageX + 43, imageY - 34);
-		batch.draw(challenge3Off, imageX + 80, imageY - 34);
 	}
 	
 	public void leftClick()
 	{
-		gui.chooseShip(ship);
+		//gui.chooseShip(ship);
+	}
+
+	public Ship getShip() 
+	{
+		return ship;
 	}
 }

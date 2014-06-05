@@ -356,4 +356,41 @@ public class HangerScreen implements FTLScreen
 		setShip(ship);
 	}
 
+	public void setLayout(Ship ship1, Ship ship2, Ship ship3, int shipLayoutChoosen) 
+	{
+		listGui.show(false);
+		
+		bA.setShip(ship1.getName());
+		bB.setShip(ship2.getName());
+		if(ship3 != null)
+		{
+			bC.setShip(ship3.getName());
+			bC.setDisabled(false);
+		}
+		else
+		{
+			bC.setDisabled(true);
+		}
+		
+		bA.setSelected(false);
+		bB.setSelected(false);
+		bC.setSelected(false);
+		
+		if(shipLayoutChoosen == 0)
+		{
+			bA.setSelected(true);
+			setShip(bA);
+		}
+		else if(shipLayoutChoosen == 1)
+		{
+			bB.setSelected(true);
+			setShip(bB);
+		}
+		else if(shipLayoutChoosen == 2)
+		{
+			bC.setSelected(true);
+			setShip(bC);
+		}
+	}
+
 }

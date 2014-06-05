@@ -15,9 +15,9 @@ public class ButtonToggleable extends Button
 		super(imageX, imageY, screenX, screenY, width, height, image_up);
 	}
 	
-	public ButtonToggleable(int i, int j, Texture autofire_up) 
+	public ButtonToggleable(int i, int j, Texture image_up) 
 	{
-		super(i, j, autofire_up);
+		super(i, j, image_up);
 	}
 	
 	public void setSelected(boolean selected)

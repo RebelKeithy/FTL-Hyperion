@@ -21,7 +21,8 @@ public class ListGUI extends GUI
 	private ListLayoutButton bTypeC;
 	
 	private int page = 0;
-	private Button[][] shipButtons;
+	private String[][] shipNames;
+	private ShipButton[][] shipButtons;
 	
 	
 	public ListGUI(HangerScreen hanger)
@@ -62,19 +63,28 @@ public class ListGUI extends GUI
 		bTypeC.setDisabledImage(bTypeCOff);
 		addButton(bTypeC);
 		
-		shipButtons = new Button[3][10];
+		shipNames = new String[3][10];
 		
-		Ship kestrel = ShipRegistry.build("The Kestrel", "The Kestrel");
-		shipButtons[0][0] = new ShipButton(this, kestrel, offsetX + 24, offsetY + 240);
-		this.addButton(shipButtons[0][0]);
+		shipNames[0][0] = "The Kestrel";
+		shipNames[1][0] = "Red-Tail";
+		shipNames[0][1] = "The Torus";
+		shipNames[1][1] = "The Vortex";
 		
-		Ship engi = ShipRegistry.build("The Torus", "The Torus");
-		shipButtons[0][1] = new ShipButton(this, engi, offsetX + 24 + 205, offsetY + 240);
-		this.addButton(shipButtons[0][1]);
+		shipButtons = new ShipButton[3][10];
 		
-		Ship engiB = ShipRegistry.build("The Vortex", "The Vortex");
-		shipButtons[0][2] = new ShipButton(this, engiB, offsetX + 24 + 205*2, offsetY + 240);
-		this.addButton(shipButtons[0][2]);
+		for(int i = 0; i < 3; i++)
+		{
+			for(int j = 0; j < 10; j++)
+			{
+				Ship ship = null;
+				if(shipNames[i][j] != null)
+				{
+					ship = ShipRegistry.build(shipNames[i][j], shipNames[i][j]);
+				}
+				
+				shipButtons[i][j] = new ShipButton(this, ship, offsetX + 24 + 205 * (j%5), offsetY + 240 - 200 * (j/5));
+			}
+		}
 	}
 	
 	public void render(SpriteBatch batch)
@@ -87,9 +97,10 @@ public class ListGUI extends GUI
 			bTypeB.render(batch);
 			bTypeC.render(batch);
 			
-			shipButtons[0][0].render(batch);
-			shipButtons[0][1].render(batch);
-			shipButtons[0][2].render(batch);
+			for(int j = 0; j < 10; j++)
+			{
+				shipButtons[page][j].render(batch);
+			}
 		}
 	}
 
@@ -105,5 +116,26 @@ public class ListGUI extends GUI
 	public void chooseShip(Ship ship) 
 	{
 		hanger.choostFromList(ship);
+	}
+
+	@Override
+	public boolean click(int screenX, int screenY, int button) 
+	{
+		super.click(screenX, screenY, button);
+		
+		if(!show)
+			return false;
+		
+		
+		for(int j = 0; j < 10; j++)
+		{
+			if(shipButtons[page][j].click(screenX, screenY, button))
+			{
+				hanger.setLayout(shipButtons[0][j].getShip(), shipButtons[1][j].getShip(), shipButtons[2][j].getShip(), page);
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

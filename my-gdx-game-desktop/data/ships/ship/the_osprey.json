@@ -1,47 +1,47 @@
 {
-    "name": "The Vortex",
-    "layout": "EngiB",
+    "name": "The Osprey",
+    "layout": "FederationA",
     "systems": {
         "reactor": {
             "power": 32,
             "cost": [ 120, 30, 30, 30, 30, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 30, 30, 30, 35, 35, 35, 35, 35 ]
         },
         "engines": {
-            "room": "room3",
+            "room": "room4",
             "stationX": 0,
             "stationY": 0,
             "direction": "down",
-            "power": 1,
+            "power": 2,
             "cost": [ 50, 10, 15, 30, 40, 60, 80, 120 ]
         },
         "shields": {
-            "room": "room8",
-            "stationX": 1,
-            "stationY": 0,
-            "direction": "down",
+            "room": "room12",
+            "stationX": 0,
+            "stationY": 1,
+            "direction": "left",
             "power": 2,
             "cost": [ 50, 100, 20, 30, 40, 60, 80, 100 ]
         },
         "oxygen": {
-            "room": "room4",
+            "room": "room9",
             "power": 1,
             "cost": [ 50, 25, 50 ]
         },
         "weapons": {
-            "room": "room7",
+            "room": "room17",
             "stationX": 1,
-            "stationY": 0,
+            "stationY": 1,
             "direction": "up",
-            "power": 3,
+            "power": 2,
             "cost": [ 20, 60, 25, 35, 50, 75, 90, 100 ]
         },
         "health": {
-            "room": "room12",
+            "room": "room11",
             "power": 1,
             "cost": [ 60, 35, 45 ]
         },
         "sensors": {
-            "room": "room10",
+            "room": "room15",
             "stationX": 1,
             "stationY": 0,
             "direction": "down",
@@ -49,15 +49,15 @@
             "cost": [ 40, 25, 40 ]
         },
         "doors": {
-            "room": "room6",
-            "stationX": 1,
-            "stationY": 0,
-            "direction": "up",
+            "room": "room10",
+            "stationX": 0,
+            "stationY": 1,
+            "direction": "right",
             "power": 1,
             "cost": [ 60, 35, 50 ]
         },
         "command": {
-            "room": "room14",
+            "room": "room8",
             "stationX": 0,
             "stationY": 1,
             "direction": "right",
@@ -67,18 +67,29 @@
     },
     "resources": {
         "fuel": 16,
-        "missiles": 0,
-        "drones": 6,
+        "missiles": 5,
+        "drones": 2,
         "scrap": 30
     },
     "crew": {
-        "Bob": {
-            "room": "room14",
+        "Stick": {
+            "room": "room8",
+            "race": "Human"
+        },
+        "Hector": {
+            "room": "room4",
+            "race": "Mantis"
+        },
+        "Xin Xin": {
+            "room": "room17",
+            "race": "Rockman"
+        },
+        "Mr Buga": {
+            "room": "room12",
             "race": "Engi"
         }
     },
     "weapons": [
-        "HeavyIon",
-		"HeavyLaserI"
+        "BurstMkII"
     ]
 }

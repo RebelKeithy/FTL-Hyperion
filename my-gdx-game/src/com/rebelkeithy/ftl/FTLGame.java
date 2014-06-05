@@ -126,6 +126,7 @@ public class FTLGame
 		ShipLayoutRegistry.registerLayout(new File("data/ships/layouts/kestrelB.json"));
 		ShipLayoutRegistry.registerLayout(new File("data/ships/layouts/engiA.json"));
 		ShipLayoutRegistry.registerLayout(new File("data/ships/layouts/engiB.json"));
+		ShipLayoutRegistry.registerLayout(new File("data/ships/layouts/federationA.json"));
 		
 		registerRaces();
 		
@@ -133,6 +134,7 @@ public class FTLGame
 		ShipRegistry.registerShip(new File("data/ships/ship/red_tail.json"));
 		ShipRegistry.registerShip(new File("data/ships/ship/the_torus.json"));
 		ShipRegistry.registerShip(new File("data/ships/ship/the_vortex.json"));
+		ShipRegistry.registerShip(new File("data/ships/ship/the_osprey.json"));
 
 		registerSkills();
 		registerSystems();

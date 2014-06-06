@@ -4,35 +4,95 @@
         "health": 100,
         "attack": 1,
         "repair": 1,
-        "speed": 1
+        "speed": 1,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 9, 10, 11, 12 ],
+            "walking_left": [ 13, 14, 15, 16 ],
+            "manning_down": [ 76, 77, 78, 79 ],
+            "manning_right": [ 63, 64, 65, 66 ],
+            "manning_up": [ 72, 73, 74, 75 ],
+            "manning_left": [ 67, 68, 69, 70 ],
+            "death": [ 111, 112, 113, 114, 115 ]
+        }
     },
     "Engi": {
         "texture": "people/engi_base",
         "health": 100,
         "attack": 0.5,
         "repair": 2,
-        "speed": 1
+        "speed": 1,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 9, 10, 11, 12 ],
+            "walking_left": [ 13, 14, 15, 16 ],
+            "manning_down": [ 76, 77, 78, 79 ],
+            "manning_right": [ 63, 64, 65, 66 ],
+            "manning_up": [ 72, 73, 74, 75 ],
+            "manning_left": [ 67, 68, 69, 70 ],
+            "death": [ 90, 91, 92, 93, 94, 95, 96, 97, 98 ]
+        }
     },
     "Mantis": {
         "texture": "people/mantis_base",
         "health": 100,
         "attack": 1.5,
         "repair": 0.5,
-        "speed": 1.2
+        "speed": 1.2,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3, 4],
+            "walking_right": [ 5, 6, 7, 8, 9],
+            "walking_up": [ 10, 11, 12, 13, 14 ],
+            "walking_left": [ 15, 16, 17, 18, 19 ],
+            "manning_down": [ 94, 95, 96, 97 ],
+            "manning_right": [ 80, 81, 82, 83 ],
+            "manning_up": [ 90, 91, 92, 93 ],
+            "manning_left": [ 84, 85, 86, 87 ],
+            "death": [ 120, 121, 122, 123, 124, 125, 126 ]
+        }
     },
     "Rockman": {
         "texture": "people/rock_base",
         "health": 150,
         "attack": 1,
         "repair": 1,
-        "speed": 0.5
+        "speed": 0.5,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 10, 11, 12, 13 ],
+            "walking_left": [ 14, 15, 16, 17 ],
+            "manning_down": [ 84, 85, 86, 87 ],
+            "manning_right": [ 70, 71, 72, 73 ],
+            "manning_up": [ 80, 81, 82, 83 ],
+            "manning_left": [ 74, 75, 76, 77 ],
+            "death": [ 123, 124, 125, 126, 127, 128, 129 ]
+        }
     },
     "Zoltan": {
         "texture": "people/energy_base",
         "health": 70,
         "attack": 1,
         "repair": 1,
-        "speed": 1
+        "speed": 1,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 8, 9, 10, 11 ],
+            "walking_left": [ 12, 13, 14, 15 ],
+            "manning_down": [ 76, 77, 78, 79 ],
+            "manning_right": [ 64, 65, 66, 67 ],
+            "manning_up": [ 72, 73, 74, 75 ],
+            "manning_left": [ 68, 69, 70, 71 ],
+            "death": [ 93, 92, 91, 90, 89, 88, 94 ]
+        }
     },
     "Slug": {
         "texture": "people/slug_base",

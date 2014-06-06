@@ -37,7 +37,7 @@ public class ShipRenderer
 	int roomTextureOffsetY = 0;
 	
 	RoomRenderer roomRenderer;
-	CrewRenderer crewRenderer;
+	//CrewRenderer crewRenderer;
 	private boolean interactive;
 	
 	public ShipRenderer(Ship ship)
@@ -48,7 +48,7 @@ public class ShipRenderer
 		
 		thrusters = TextureRegistry.registerSprite("thrusters_on", "effects/thrusters_on");
 		roomRenderer = new RoomRenderer();
-		crewRenderer = new CrewRenderer("human_base", "human_glow");
+		//crewRenderer = new CrewRenderer(crew, "human_glow");
 
 		shipOffsetX = ship.renderData.offsetX;
 		shipOffsetY = ship.renderData.offsetY;
@@ -156,7 +156,7 @@ public class ShipRenderer
 		{
 			if(CrewRenderer.getCrewRenderer(member) == null)
 			{
-				CrewRenderer.registerCrewRenderer(member, new CrewRenderer("human_base", "human_glow"));
+				CrewRenderer.registerCrewRenderer(member, new CrewRenderer(member, "human_glow"));
 			}
 			CrewRenderer.getCrewRenderer(member).render(batch, member, totalShipOffsetX, totalShipOffsetY);
 		}

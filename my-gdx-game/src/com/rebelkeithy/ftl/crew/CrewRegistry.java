@@ -3,6 +3,7 @@ package com.rebelkeithy.ftl.crew;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public class CrewRegistry
 	public static class Race
 	{
 		public String texture;
+		public Map<String, Integer[]>animations = new HashMap<String, Integer[]>();
 		public int health;
 		public double attack;
 		public double repair;
@@ -49,6 +51,18 @@ public class CrewRegistry
 				if(projectileDef.containsKey("speed"))
 					race.speed = ((Double)projectileDef.get("speed"));
 				
+				if(projectileDef.containsKey("animations"))
+				{
+					Map<String, ArrayList<Double>> animationsDouble = (Map<String, ArrayList<Double>>) projectileDef.get("animations");
+					for(String animationName : animationsDouble.keySet())
+					{
+						ArrayList<Double> doubleArray = animationsDouble.get(animationName);
+						Integer[] intArray = new Integer[doubleArray.size()];  
+						for (int i=0; i < intArray.length; ++i)  
+						    intArray[i] = doubleArray.get(i).intValue();
+						race.animations.put(animationName, intArray);
+					}
+				}
 				races.put(name, race);
 			}
 			
@@ -66,7 +80,7 @@ public class CrewRegistry
 		Race raceDef = races.get(race);
 		if(raceDef == null)
 		{
-			System.out.println("Race " + race + " not found.");
+			System.out.println("Cannot buid race, " + race + " not found.");
 		}
 		
 		Crew crew = new Crew(race, name);
@@ -81,7 +95,8 @@ public class CrewRegistry
 
 	public static Race getRace(String race) 
 	{
-		System.out.println("Race " + race + " not found");
+		if(!races.containsKey(race))
+			System.out.println("Race " + race + " not found");
 		return races.get(race);
 	}
 }

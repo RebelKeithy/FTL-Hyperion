@@ -15,6 +15,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.crew.Crew;
+import com.rebelkeithy.ftl.crew.CrewRegistry;
+import com.rebelkeithy.ftl.crew.CrewRegistry.Race;
 import com.rebelkeithy.ftl.crew.CrewStates;
 import com.rebelkeithy.ftl.crew.Skill;
 import com.rebelkeithy.ftl.ship.Direction;
@@ -33,8 +35,8 @@ public class CrewRenderer
 		return renderers.get(crew.getName());
 	}
 	
-	private String textureName;
-	private String textureGlow;
+	private Texture texture;
+	private Texture textureGlow;
 	
 	private Texture healthBarBg;
 	private Texture healthLowBarBg;
@@ -46,10 +48,11 @@ public class CrewRenderer
 	private double crewOldX;
 	private double crewOldY;
 	
-	public CrewRenderer(String texture, String glow)
+	public CrewRenderer(Crew crew, String glow)
 	{
-		this.textureName = texture;
-		this.textureGlow = glow;
+		Race race = CrewRegistry.getRace(crew.getRace());
+		this.texture = TextureRegistry.registerSprite(race.texture, race.texture);
+		this.textureGlow = TextureRegistry.registerSprite(glow, glow);
 		
 		healthBarBg = TextureRegistry.registerSprite("healthBarBg", "people/health_box");
 		healthLowBarBg = TextureRegistry.registerSprite("healthLowBarBg", "people/health_box_red");
@@ -166,20 +169,35 @@ public class CrewRenderer
 		int v = 0;
 		float alpha = 1;
 		
+		Race race = CrewRegistry.getRace(crew.getRace());
 		if(crew.state == CrewStates.WALKING)
 		{
 			if(direction == Direction.UP)
 			{
-				v = 35;
+				if(spriteState >= race.animations.get("walking_up").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("walking_up")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
 			}
 			if(direction == Direction.LEFT)
 			{
-				u = 35*4;
-				v = 35;
+				if(spriteState >= race.animations.get("walking_left").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("walking_left")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
 			}
 			if(direction == Direction.RIGHT)
 			{
-				u = 35*4;
+				if(spriteState >= race.animations.get("walking_right").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("walking_right")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
 			}
 			
 			if(timer%20 == 0)
@@ -187,8 +205,6 @@ public class CrewRenderer
 				if(crew.isMoving())
 				{
 					spriteState++;
-					if(spriteState >= 4)
-						spriteState = 0;
 				}
 				else
 				{
@@ -205,17 +221,39 @@ public class CrewRenderer
 			
 			if(stationDir == Direction.UP)
 			{
-				u = 0;
+				if(spriteState >= race.animations.get("manning_up").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("manning_up")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
 			}
 			if(stationDir == Direction.LEFT)
 			{
-				u = 35*4;
-				v = 35*7;
+				if(spriteState >= race.animations.get("manning_left").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("manning_left")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
 			}
 			if(stationDir == Direction.RIGHT)
 			{
-				u = 35*0;
-				v = 35*7;
+				if(spriteState >= race.animations.get("manning_right").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("manning_right")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
+			}
+			if(stationDir == Direction.DOWN)
+			{
+				if(spriteState >= race.animations.get("manning_down").length)
+					spriteState = 0;
+				
+				int frame = race.animations.get("manning_down")[spriteState];
+				v = (frame / (texture.getWidth()/35)) * 35;
+				u = (frame % (texture.getWidth()/35)) * 35;
 			}
 
 			
@@ -235,9 +273,19 @@ public class CrewRenderer
 			u = 3*35;
 			v = 12*35;
 			spriteState = (int)(crew.getTimeDead()/200);
-			if(spriteState > 4)
+			
+
+			if(spriteState >= race.animations.get("death").length)
+				spriteState = race.animations.get("death").length - 1;
+			
+			int frame = race.animations.get("death")[spriteState];
+			v = (frame / (texture.getWidth()/35)) * 35;
+			u = (frame % (texture.getWidth()/35)) * 35;
+			
+			if(spriteState == race.animations.get("death").length - 1)
 			{
-				alpha = 1 - (crew.getTimeDead() - 1000)/1000f;
+				alpha = 1 - (crew.getTimeDead() - (200 * race.animations.get("death").length))/(200 * race.animations.get("death").length);
+				System.out.println(alpha);
 				if(alpha > 1)
 					alpha = 1;
 				if(alpha < 0)
@@ -264,7 +312,7 @@ public class CrewRenderer
 			spriteState = 0;
 		}
 		
-		u += spriteState*35;
+		//u += spriteState*35;
 
 		//TODO: wont work in battle because of extra 150 shift left
 		int mouseX = Gdx.input.getX() - shipOffsetX;
@@ -303,22 +351,19 @@ public class CrewRenderer
 		// Draw crew glow
 		if(FTLView.inputHandler.selected == crew || hover)
 		{
-			Texture glow = TextureRegistry.getTexture(textureGlow);
-			TextureRegion regionGlow = new TextureRegion(glow, u, v, 35, 35);
+			TextureRegion regionGlow = new TextureRegion(textureGlow, u, v, 35, 35);
 			batch.setColor(0, 0.8f, 0, 0.5f);
 			batch.draw(regionGlow, shipOffsetX + (float)crew.getX()*35, shipOffsetY + (float)crew.getY()*35);
 			batch.setColor(1, 1, 1, 1);
 		}
 		else// if(crew.state != CrewStates.DYING)
 		{
-			Texture glow = TextureRegistry.getTexture(textureGlow);
-			TextureRegion regionGlow = new TextureRegion(glow, u, v, 35, 35);
+			TextureRegion regionGlow = new TextureRegion(textureGlow, u, v, 35, 35);
 			batch.setColor(1, 1, 0/156f, 1);
 			batch.draw(regionGlow, shipOffsetX + (float)crew.getX()*35, shipOffsetY + (float)crew.getY()*35);
 			batch.setColor(1, 1, 1, 1);
 		}
 
-		Texture texture = TextureRegistry.registerSprite(textureName, textureName);
 		TextureRegion region = new TextureRegion(texture, u, v, 35, 35);
 		batch.setColor(1, 1, 1, alpha);
 		if(FTLView.inputHandler.selected == crew || hover)
@@ -387,13 +432,11 @@ public class CrewRenderer
 			}
 		}
 		
-		Texture glow = TextureRegistry.getTexture(textureGlow);
-		TextureRegion regionGlow = new TextureRegion(glow, 0, 0, 35, 35);
+		TextureRegion regionGlow = new TextureRegion(textureGlow, 0, 0, 35, 35);
 		batch.setColor(1, 1, 0/156f, 1);
 		batch.draw(regionGlow, 10, 532 + offsetY);
 		batch.setColor(1, 1, 1, 1);
 
-		Texture texture = TextureRegistry.getTexture(textureName);
 		TextureRegion crewRegion = new TextureRegion(texture, 0, 0 , 35, 35);
 		batch.draw(crewRegion, 10, 532 + offsetY);
 		

@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rebelkeithy.ftl.crew.Crew;
+import com.rebelkeithy.ftl.crew.CrewRegistry;
+import com.rebelkeithy.ftl.crew.CrewRegistry.Race;
 
 public class CrewBox 
 {
@@ -44,7 +46,8 @@ public class CrewBox
 			batch.draw(crewSlot, offsetX, offsetY);
 		}
 		
-		Texture texture = TextureRegistry.registerSprite("human_base", "people/human_base");
+		Race race = CrewRegistry.getRace(crew.getRace());
+		Texture texture = TextureRegistry.registerSprite(race.texture, race.texture);
 		batch.draw(new TextureRegion(texture,  0,  0, 35, 35), offsetX + 16, offsetY + 4, 70, 70);
 
 		Color color = Fonts.font8.getColor();

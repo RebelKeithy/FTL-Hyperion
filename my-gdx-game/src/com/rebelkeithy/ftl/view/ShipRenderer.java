@@ -156,7 +156,7 @@ public class ShipRenderer
 		{
 			if(CrewRenderer.getCrewRenderer(member) == null)
 			{
-				CrewRenderer.registerCrewRenderer(member, new CrewRenderer(member, "human_glow"));
+				CrewRenderer.registerCrewRenderer(member, new CrewRenderer(member));
 			}
 			CrewRenderer.getCrewRenderer(member).render(batch, member, totalShipOffsetX, totalShipOffsetY);
 		}

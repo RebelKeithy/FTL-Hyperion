@@ -20,6 +20,7 @@ public class CrewRegistry
 	public static class Race
 	{
 		public String texture;
+		public String glowTexture;
 		public Map<String, Integer[]>animations = new HashMap<String, Integer[]>();
 		public int health;
 		public double attack;
@@ -42,6 +43,8 @@ public class CrewRegistry
 				Race race = new Race();
 				if(projectileDef.containsKey("texture"))
 					race.texture = ((String)projectileDef.get("texture"));
+				if(projectileDef.containsKey("glow"))
+					race.glowTexture = ((String)projectileDef.get("glow"));
 				if(projectileDef.containsKey("health"))
 					race.health = ((Double)projectileDef.get("health")).intValue();
 				if(projectileDef.containsKey("attack"))

@@ -1,6 +1,7 @@
 {
     "Human": {
         "texture": "people/human_base",
+        "glow": "people/human_color",
         "health": 100,
         "attack": 1,
         "repair": 1,
@@ -20,6 +21,7 @@
     },
     "Engi": {
         "texture": "people/engi_base",
+        "glow": "people/engi_color",
         "health": 100,
         "attack": 0.5,
         "repair": 2,
@@ -39,6 +41,7 @@
     },
     "Mantis": {
         "texture": "people/mantis_base",
+        "glow": "people/mantis_color",
         "health": 100,
         "attack": 1.5,
         "repair": 0.5,
@@ -58,6 +61,7 @@
     },
     "Rockman": {
         "texture": "people/rock_base",
+        "glow": "people/rock_color",
         "health": 150,
         "attack": 1,
         "repair": 1,
@@ -77,6 +81,7 @@
     },
     "Zoltan": {
         "texture": "people/energy_base",
+        "glow": "people/energy_color",
         "health": 70,
         "attack": 1,
         "repair": 1,
@@ -96,23 +101,62 @@
     },
     "Slug": {
         "texture": "people/slug_base",
+        "glow": "people/slug_color",
         "health": 100,
         "attack": 1,
         "repair": 1,
-        "speed": 1
+        "speed": 1,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 9, 10, 11, 12 ],
+            "walking_left": [ 13, 14, 15, 16 ],
+            "manning_down": [ 84, 85, 86, 87 ],
+            "manning_right": [ 72, 73, 74, 75 ],
+            "manning_up": [ 80, 81, 82, 83 ],
+            "manning_left": [ 76, 77, 78, 79 ],
+            "death": [ 106, 107, 108, 109, 110, 111, 112 ]
+        }
     },
     "Crystal": {
         "texture": "people/crystal_base",
+        "glow": "people/crystal_color",
         "health": 125,
         "attack": 1,
         "repair": 1,
-        "speed": 0.8
+        "speed": 0.8,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 10, 11, 12, 13 ],
+            "walking_left": [ 14, 15, 16, 17 ],
+            "manning_down": [ 84, 85, 86, 87 ],
+            "manning_right": [ 70, 71, 72, 73 ],
+            "manning_up": [ 80, 81, 82, 83 ],
+            "manning_left": [ 74, 75, 76, 77 ],
+            "death": [ 123, 124, 125, 126, 127, 128 ]
+        }
     },
     "Lanius": {
-        "texture": "people/_base",
+        "texture": "people/anaerobic_base",
+        "glow": "people/anaerobic_color",
         "health": 100,
         "attack": 1,
         "repair": 1,
-        "speed": 0.8
+        "speed": 0.8,
+        "animations": {
+            "idle": [ 0 ],
+            "walking_down": [ 0, 1, 2, 3],
+            "walking_right": [ 4, 5, 6, 7],
+            "walking_up": [ 8, 9, 10, 11 ],
+            "walking_left": [ 12, 13, 14, 15 ],
+            "manning_down": [ 76, 77, 78, 79 ],
+            "manning_right": [ 64, 65, 66, 67 ],
+            "manning_up": [ 72, 73, 74, 75 ],
+            "manning_left": [ 68, 69, 70, 71 ],
+            "death": [ 88, 89, 90, 91, 92, 93, 94, 95 ]
+        }
     }
 }

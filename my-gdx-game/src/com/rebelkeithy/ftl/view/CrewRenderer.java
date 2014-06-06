@@ -48,11 +48,11 @@ public class CrewRenderer
 	private double crewOldX;
 	private double crewOldY;
 	
-	public CrewRenderer(Crew crew, String glow)
+	public CrewRenderer(Crew crew)
 	{
 		Race race = CrewRegistry.getRace(crew.getRace());
 		this.texture = TextureRegistry.registerSprite(race.texture, race.texture);
-		this.textureGlow = TextureRegistry.registerSprite(glow, glow);
+		this.textureGlow = TextureRegistry.registerSprite(race.glowTexture, race.glowTexture);
 		
 		healthBarBg = TextureRegistry.registerSprite("healthBarBg", "people/health_box");
 		healthLowBarBg = TextureRegistry.registerSprite("healthLowBarBg", "people/health_box_red");

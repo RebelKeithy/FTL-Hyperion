@@ -123,7 +123,7 @@ public class ShipRenderer
 		Texture texture = TextureRegistry.getTexture(ship.renderData.shipTexture);
 		batch.draw(texture, totalShipOffsetX + shipTextureOffsetX, totalShipOffsetY + shipTextureOffsetY);
 
-		if(ship.getSystem("engines").isPowered() && ship.getSystem("command").isManned())
+		if(ship.getSystem("engines").isPowered() && ship.getSystem("pilot").isManned())
 		{
 			long time = System.currentTimeMillis();
 			int u = (int) ((time%500)/125);

@@ -143,6 +143,10 @@ public class FTLGame
 
 		new IonHandler();
 		crewEffects = new CrewEffects();
+		
+		ShipLayoutRegistry.loadTextures();
+		CrewRegistry.loadTextures();
+		SystemRegistry.loadTextures();
 	}
 	
 	public void load()
@@ -209,14 +213,14 @@ public class FTLGame
 	public static void registerSystems()
 	{
 		SystemRegistry.register("reactor", ReactorSystem.class);
-		SystemRegistry.register("command", CommandSystem.class);
+		SystemRegistry.register("pilot", CommandSystem.class);
 		SystemRegistry.register("engines", EngineSystem.class);
 		SystemRegistry.register("shields", ShieldSystem.class);
 		SystemRegistry.register("weapons", WeaponSystem.class);
 		SystemRegistry.register("oxygen", OxygenSystem.class);
 		SystemRegistry.register("sensors", SensorsSystem.class);
 		SystemRegistry.register("doors", DoorsSystem.class);
-		SystemRegistry.register("health", HealthSystem.class);
+		SystemRegistry.register("medbay", HealthSystem.class);
 	}
 	
 	public static void registerWeapons()

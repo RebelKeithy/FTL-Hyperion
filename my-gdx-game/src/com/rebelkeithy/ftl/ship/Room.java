@@ -75,7 +75,7 @@ public class Room
 		//EventHitRoom event = new EventHitRoom(projectile, ship, projectile.getSource(), this);
 		if(!ship.isDead())
 		{
-			boolean dodged = ((CommandSystem)ship.getSystem("command")).dodgeProjectile(projectile);
+			boolean dodged = ((CommandSystem)ship.getSystem("pilot")).dodgeProjectile(projectile);
 			if(dodged)
 				return;
 			

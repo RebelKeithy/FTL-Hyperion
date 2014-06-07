@@ -273,7 +273,7 @@ public class ShipUIRenderer
 	private void renderEvadeOxygen(SpriteBatch batch, Ship ship)
 	{
 		batch.draw(evadeOxygen, 0, 565);
-		int dodge = (int) ((CommandSystem)(ship.getSystem("command"))).getDodge();
+		int dodge = (int) ((CommandSystem)(ship.getSystem("pilot"))).getDodge();
 		
 		TextBounds bounds = Fonts.ccFont.getBounds("" + dodge);
 		Fonts.ccFont.draw(batch, "" + dodge, 82 - bounds.width, 598);
@@ -310,7 +310,7 @@ public class ShipUIRenderer
 		float shipFtlCharge = (float) ship.getFTLCharge();
 
 		// Render FTL Pullout
-		if(!(ship.getSystem("command").isPowered() && ship.getSystem("command").isManned() && ship.getSystem("engines").isPowered()))
+		if(!(ship.getSystem("pilot").isPowered() && ship.getSystem("pilot").isManned() && ship.getSystem("engines").isPowered()))
 		{
 			ftlPulloutTimer+=6;
 			if(ftlPulloutTimer > 48)
@@ -336,7 +336,7 @@ public class ShipUIRenderer
 			float alpha = time%2000;
 			alpha = (-Math.abs(alpha-1000) + 1000)/1000f;
 			
-			if(ship.getSystem("command").isPowered() && ship.getSystem("command").isManned())
+			if(ship.getSystem("pilot").isPowered() && ship.getSystem("pilot").isManned())
 			{
 				batch.draw(pilotOn, 548, 635 + 48-ftlPulloutTimer);
 			}
@@ -365,7 +365,7 @@ public class ShipUIRenderer
 		
 		if(shipFtlCharge < 1)
 		{
-			if(ship.getSystem("command").isPowered() && ship.getSystem("command").isManned() && ship.getSystem("engines").isPowered())
+			if(ship.getSystem("pilot").isPowered() && ship.getSystem("pilot").isManned() && ship.getSystem("engines").isPowered())
 			{
 				TextureRegion chargeRegion = new TextureRegion(ftlCharge, (int) (74*shipFtlCharge), 29);
 				batch.draw(chargeRegion, 536, 656);
@@ -388,7 +388,7 @@ public class ShipUIRenderer
 		}
 		else
 		{
-			if(ship.getSystem("command").isPowered() && ship.getSystem("command").isManned() && ship.getSystem("engines").isPowered())
+			if(ship.getSystem("pilot").isPowered() && ship.getSystem("pilot").isManned() && ship.getSystem("engines").isPowered())
 			{
 				batch.setColor(1, 1, 0, 1);
 				batch.draw(jumpOn, 529, 649);
@@ -416,7 +416,7 @@ public class ShipUIRenderer
 	{
 		subsystemRenderers = new ArrayList<SystemRenderer>();
 		
-		String names[] = {"command", "sensors", "doors", "battery"};
+		String names[] = {"pilot", "sensors", "doors", "battery"};
 		
 		int systemX = 1034;
 		for(String name : names)
@@ -455,10 +455,10 @@ public class ShipUIRenderer
 		int systemX = 12;
 		int systemY = 24;
 		
-		AbstractShipSystem command = ship.getSystem("reactor");
-		for(int i = 0; i < command.getMaxPower(); i++)
+		AbstractShipSystem reactor = ship.getSystem("reactor");
+		for(int i = 0; i < reactor.getMaxPower(); i++)
 		{
-			if(command.getPower() > i)
+			if(reactor.getPower() > i)
 				batch.draw(powerSlotPoweredLarge, systemX, 27 + i*9);
 			else
 				batch.draw(powerSlotEmptyLarge, systemX, 27 + i*9);

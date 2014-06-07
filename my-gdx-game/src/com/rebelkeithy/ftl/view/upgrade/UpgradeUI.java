@@ -97,7 +97,7 @@ public class UpgradeUI extends GUI
 		
 		int i = 0;
 		systems = new ArrayList<Button>();
-		String[] systemNames = {"shields", "engines", "health", "oxygen", "weapons"};
+		String[] systemNames = {"shields", "engines", "medbay", "oxygen", "weapons"};
 		for(String systemName : systemNames)
 		{
 			if(ship.getSystem(systemName) != null)
@@ -111,7 +111,7 @@ public class UpgradeUI extends GUI
 		
 		i = 0;
 		subsystems = new ArrayList<Button>();
-		String[] subsystemNames = {"command", "sensors", "doors", "battery"};
+		String[] subsystemNames = {"pilot", "sensors", "doors", "battery"};
 		for(String systemName : subsystemNames)
 		{
 			if(ship.getSystem(systemName) != null)

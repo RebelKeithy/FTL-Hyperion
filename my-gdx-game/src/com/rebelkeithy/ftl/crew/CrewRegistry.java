@@ -17,17 +17,6 @@ public class CrewRegistry
 	private static double baseAttack = 5;
 	private static double baseRepair = 0.05;
 	
-	public static class Race
-	{
-		public String texture;
-		public String glowTexture;
-		public Map<String, Integer[]>animations = new HashMap<String, Integer[]>();
-		public int health;
-		public double attack;
-		public double repair;
-		public double speed;
-	}
-	
 	private static Map<String, Race> races = new HashMap<String, Race>();
 	
 	@SuppressWarnings({ "unchecked" })
@@ -101,5 +90,13 @@ public class CrewRegistry
 		if(!races.containsKey(race))
 			System.out.println("Race " + race + " not found");
 		return races.get(race);
+	}
+	
+	public static void loadTextures()
+	{
+		for(Race race : races.values())
+		{
+			race.loadTextures();
+		}
 	}
 }

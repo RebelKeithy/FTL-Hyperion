@@ -8,6 +8,7 @@ import com.rebelkeithy.ftl.properties.Properties;
 import com.rebelkeithy.ftl.ship.Room;
 import com.rebelkeithy.ftl.ship.Ship;
 import com.rebelkeithy.ftl.view.SystemRenderer;
+import com.rebelkeithy.ftl.view.TextureRegistry;
 
 public abstract class AbstractShipSystem 
 {
@@ -38,7 +39,8 @@ public abstract class AbstractShipSystem
 		this.maxPower = maxPower;
 		currPower = 0;
 		
-		ship.EVENT_BUS.register(this);
+		if(ship != null)
+			ship.EVENT_BUS.register(this);
 	}
 	
 	public String getDisplayName() { return getName(); }
@@ -297,5 +299,15 @@ public abstract class AbstractShipSystem
 	public int getStationDir()
 	{
 		return station.dir;
+	}
+	
+	public void loadTextures()
+	{
+		TextureRegistry.registerSprite("room_system_icon_" + getName(), "icons/s_" + getName() + "_overlay");
+		TextureRegistry.registerSprite("system_" + getName(), "icons/s_" + getName() + "_green1");
+		TextureRegistry.registerSprite("system_" + getName() + "_over", "icons/s_" + getName() + "_green2");
+		TextureRegistry.registerSprite("system_" + getName() + "_off", "icons/s_" + getName() + "_grey1");
+		TextureRegistry.registerSprite("system_" + getName() + "_off_over", "icons/s_" + getName() + "_grey2");
+		TextureRegistry.registerSprite("system_" + getName() + "_glow", "icons/s_" + getName());
 	}
 }

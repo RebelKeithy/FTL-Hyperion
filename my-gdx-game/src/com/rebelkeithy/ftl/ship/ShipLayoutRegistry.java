@@ -153,6 +153,24 @@ public class ShipLayoutRegistry
 		
 		return ship;
 	}
+	
+	public static void loadTextures()
+	{
+		for(Map root : layouts.values())
+		{		
+			String image = (String) root.get("texture");
+			TextureRegistry.registerSprite(image, "ship/" + image);
+			
+			image = (String) root.get("miniship_texture");
+			TextureRegistry.registerSprite(image, "customizeUI/" + image);
+			
+			image = (String) root.get("roomtexture");
+			TextureRegistry.registerSprite(image, "ship/" + image);
+			
+			image = (String) root.get("shieldimage");
+			TextureRegistry.registerSprite(image, "ship/" + image);
+		}
+	}
 }
 
 

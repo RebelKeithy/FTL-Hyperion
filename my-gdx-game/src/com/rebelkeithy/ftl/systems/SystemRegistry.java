@@ -46,4 +46,12 @@ public class SystemRegistry
 		return null;
 	}
 	
+	public static void loadTextures()
+	{
+		for(String systemName : systems.keySet())
+		{
+			AbstractShipSystem system = SystemRegistry.build(systemName, null, 1);
+			system.loadTextures();
+		}
+	}
 }

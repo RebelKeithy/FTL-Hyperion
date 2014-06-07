@@ -35,7 +35,7 @@
             "power": 3,
             "cost": [ 20, 60, 25, 35, 50, 75, 90, 100 ]
         },
-        "health": {
+        "medbay": {
             "room": "room12",
             "power": 1,
             "cost": [ 60, 35, 45 ]
@@ -56,7 +56,7 @@
             "power": 1,
             "cost": [ 60, 35, 50 ]
         },
-        "command": {
+        "pilot": {
             "room": "room14",
             "stationX": 0,
             "stationY": 1,

@@ -328,7 +328,7 @@ public class HangerScreen implements FTLScreen
 		shipRenderer.setInteractive(false);
 		
 		systemRenderers = new ArrayList<HangerSystemRenderer>();
-		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "health", "command", "sensors", "doors"};
+		String[] systemNames = new String[] {"shields", "engines", "oxygen", "weapons", "medbay", "pilot", "sensors", "doors"};
 		for(String system : systemNames)
 		{
 			systemRenderers.add(new HangerSystemRenderer(ship.getSystem(system)));

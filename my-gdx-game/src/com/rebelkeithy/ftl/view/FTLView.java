@@ -44,8 +44,6 @@ public class FTLView extends Game
 		Sounds.registerSound("systemUpgrade", "ui/bp_upgrade_1.ogg");
 		
 		TextureRegistry.registerSprite("background", "stars/bg_lonelystar");
-		TextureRegistry.registerSprite("human_base", "people/human_base");
-		TextureRegistry.registerSprite("human_glow", "people/human_color");
 		TextureRegistry.registerSprite("doors", "effects/door_sheet");
 		TextureRegistry.registerSprite("door_highlight", "effects/door_highlight");
 		
@@ -70,7 +68,8 @@ public class FTLView extends Game
 	
 	public void registerTextures()
 	{
-		String[] systems = new String[] {"command", "engines", "oxygen", "weapons", "health", "shields", "doors", "sensors" };
+		/*
+		String[] systems = new String[] {"pilot", "engines", "oxygen", "weapons", "medbay", "shields", "doors", "sensors" };
 		String[] names = new String[] {"pilot", "engines", "oxygen", "weapons", "medbay", "shields", "doors", "sensors" };
 		
 		for(int i = 0; i < systems.length; i++)
@@ -82,6 +81,7 @@ public class FTLView extends Game
 			TextureRegistry.registerSprite("system_" + systems[i] + "_off_over", "icons/s_" + names[i] + "_grey2");
 			TextureRegistry.registerSprite("system_" + systems[i] + "_glow", "icons/s_" + names[i]);
 		}
+		*/
 
 		
 		Pixmap pixmap = new Pixmap(28, 7, Format.RGBA8888);

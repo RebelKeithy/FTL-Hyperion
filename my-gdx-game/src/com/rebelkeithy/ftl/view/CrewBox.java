@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rebelkeithy.ftl.crew.Crew;
 import com.rebelkeithy.ftl.crew.CrewRegistry;
-import com.rebelkeithy.ftl.crew.CrewRegistry.Race;
+import com.rebelkeithy.ftl.crew.Race;
 
 public class CrewBox 
 {

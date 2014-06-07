@@ -123,7 +123,7 @@ public class SpaceScreen implements FTLScreen
 		FTLGame.instance().addShip(player, 0, 0);	
 		
 		player.getSystem("shields").addPower(2);
-		player.getSystem("health").addPower(0);
+		player.getSystem("medbay").addPower(0);
 		player.getSystem("engines").addPower(1);
 		player.getSystem("oxygen").addPower(1);
 		

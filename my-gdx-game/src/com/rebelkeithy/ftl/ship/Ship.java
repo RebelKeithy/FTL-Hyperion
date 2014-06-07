@@ -159,7 +159,7 @@ public class Ship
 	
 	public void chargeFtlDrive(double dt)
 	{
-		if(ftlDriveCharge < 1 && getSystem("command").isManned())
+		if(ftlDriveCharge < 1 && getSystem("pilot").isManned())
 		{
 			FTLChargeEvent event = new FTLChargeEvent(0.01);
 			EVENT_BUS.post(event);

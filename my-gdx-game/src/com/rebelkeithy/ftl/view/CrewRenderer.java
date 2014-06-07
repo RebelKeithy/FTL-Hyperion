@@ -16,8 +16,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rebelkeithy.ftl.FTLGame;
 import com.rebelkeithy.ftl.crew.Crew;
 import com.rebelkeithy.ftl.crew.CrewRegistry;
-import com.rebelkeithy.ftl.crew.CrewRegistry.Race;
 import com.rebelkeithy.ftl.crew.CrewStates;
+import com.rebelkeithy.ftl.crew.Race;
 import com.rebelkeithy.ftl.crew.Skill;
 import com.rebelkeithy.ftl.ship.Direction;
 

@@ -41,4 +41,9 @@ public class ReactorSystem extends AbstractShipSystem
 			return amount;
 		}
 	}
+	
+	public void loadTextures()
+	{
+		
+	}
 }

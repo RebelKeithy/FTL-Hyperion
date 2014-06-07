@@ -104,13 +104,13 @@ public class HangerScreen implements FTLScreen
 		Texture leftOn = TextureRegistry.registerSprite("button_arrow_on", "customizeUI/button_arrow_on");
 		Texture leftOff = TextureRegistry.registerSprite("button_arrow_off", "customizeUI/button_arrow_off");
 		Texture leftSelect = TextureRegistry.registerSprite("button_arrow_select2", "customizeUI/button_arrow_select2");
-		bLeft = new Button(27, 547, leftOn);
+		bLeft = new LeftButton(this, 27, 547, leftOn);
 		bLeft.setHoverImage(leftSelect);
 		bLeft.setDownImage(leftSelect);
 		bLeft.setDisabledImage(leftOff);
 		buttons.add(bLeft);
 		
-		bRight = new ButtonRight(131, 547, leftOn);
+		bRight = new ButtonRight(this, 131, 547, leftOn);
 		bRight.setHoverImage(leftSelect);
 		bRight.setDownImage(leftSelect);
 		bRight.setDisabledImage(leftOff);
@@ -402,6 +402,16 @@ public class HangerScreen implements FTLScreen
 			bC.setSelected(true);
 			setShip(bC);
 		}
+	}
+
+	public void nextShip() 
+	{
+		listGui.nextShip();
+	}
+
+	public void prevShip() 
+	{
+		listGui.prevShip();
 	}
 
 }

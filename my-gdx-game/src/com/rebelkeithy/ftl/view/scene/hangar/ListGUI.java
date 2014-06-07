@@ -21,6 +21,7 @@ public class ListGUI extends GUI
 	private ListLayoutButton bTypeC;
 	
 	private int page = 0;
+	private int selectedShip = 0;
 	private String[][] shipNames;
 	private ShipButton[][] shipButtons;
 	
@@ -133,10 +134,45 @@ public class ListGUI extends GUI
 			if(shipButtons[page][j].click(screenX, screenY, button))
 			{
 				hanger.setLayout(shipButtons[0][j].getShip(), shipButtons[1][j].getShip(), shipButtons[2][j].getShip(), page);
+				selectedShip = j;
 				return true;
 			}
 		}
 		
 		return false;
+	}
+
+	public void nextShip() 
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			selectedShip++;
+			if(selectedShip == 10)
+				selectedShip = 0;
+			
+			// TODO: eventually change this to "ship is unlocked"
+			if(shipButtons[0][selectedShip].getShip() != null)
+			{
+				hanger.setLayout(shipButtons[0][selectedShip].getShip(), shipButtons[1][selectedShip].getShip(), shipButtons[2][selectedShip].getShip(), page);
+				return;
+			}
+		}
+	}
+
+	public void prevShip() 
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			selectedShip--;
+			if(selectedShip < 0)
+				selectedShip = 9;
+			
+			// TODO: eventually change this to "ship is unlocked"
+			if(shipButtons[0][selectedShip].getShip() != null)
+			{
+				hanger.setLayout(shipButtons[0][selectedShip].getShip(), shipButtons[1][selectedShip].getShip(), shipButtons[2][selectedShip].getShip(), page);
+				return;
+			}
+		}
 	}
 }

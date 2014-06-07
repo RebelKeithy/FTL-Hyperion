@@ -7,10 +7,12 @@ import com.rebelkeithy.ftl.view.Button;
 
 public class ButtonRight extends Button
 {
-
-	public ButtonRight(int imageX, int imageY, Texture image_up) 
+	private HangerScreen hanger;
+	
+	public ButtonRight(HangerScreen hanger, int imageX, int imageY, Texture image_up) 
 	{
 		super(imageX, imageY, image_up);
+		this.hanger = hanger;
 	}
 	
 	@Override
@@ -20,5 +22,10 @@ public class ButtonRight extends Button
 		region.flip(true, false);
 		
 		batch.draw(region, x, y);
+	}
+	
+	public void leftClick()
+	{
+		hanger.nextShip();
 	}
 }

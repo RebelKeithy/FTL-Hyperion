@@ -32,6 +32,7 @@ public class ShipRegistry
 			Map root = (new Gson()).fromJson(new FileReader(file), Map.class);
 			String name = (String) root.get("name");
 			
+			System.out.println("Registering Ship: " + name);
 			ships.put(name, root);
 			
 		}
@@ -47,6 +48,7 @@ public class ShipRegistry
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Ship build(String shipName, String ShipInstanceName)
 	{
+		System.out.println("Building ship " + shipName);
 		Map root = ships.get(shipName);
 		
 		String layout = (String) root.get("layout");

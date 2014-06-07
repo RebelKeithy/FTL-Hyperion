@@ -71,6 +71,7 @@ public class ListGUI extends GUI
 		shipNames[0][1] = "The Torus";
 		shipNames[1][1] = "The Vortex";
 		shipNames[0][2] = "The Osprey";
+		shipNames[0][3] = "The Adjudicator";
 		
 		shipButtons = new ShipButton[3][10];
 		

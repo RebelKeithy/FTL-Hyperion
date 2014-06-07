@@ -1,0 +1,91 @@
+{
+    "name": "The Adjudicator",
+    "layout": "ZoltanA",
+    "systems": {
+        "reactor": {
+            "power": 8,
+            "cost": [ 120, 30, 30, 30, 30, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 30, 30, 30, 35, 35, 35, 35, 35 ]
+        },
+        "engines": {
+            "room": "room1",
+            "stationX": 0,
+            "stationY": 0,
+            "direction": "down",
+            "power": 1,
+            "cost": [ 50, 10, 15, 30, 40, 60, 80, 120 ]
+        },
+        "shields": {
+            "room": "room7",
+            "stationX": 1,
+            "stationY": 1,
+            "direction": "up",
+            "power": 2,
+            "cost": [ 50, 100, 20, 30, 40, 60, 80, 100 ]
+        },
+        "oxygen": {
+            "room": "room16",
+            "power": 1,
+            "cost": [ 50, 25, 50 ]
+        },
+        "weapons": {
+            "room": "room4",
+            "stationX": 1,
+            "stationY": 1,
+            "direction": "up",
+            "power": 3,
+            "cost": [ 20, 60, 25, 35, 50, 75, 90, 100 ]
+        },
+        "medbay": {
+            "room": "room15",
+            "power": 1,
+            "cost": [ 60, 35, 45 ]
+        },
+        "sensors": {
+            "room": "room3",
+            "stationX": 1,
+            "stationY": 0,
+            "direction": "down",
+            "power": 1,
+            "cost": [ 40, 25, 40 ]
+        },
+        "doors": {
+            "room": "room12",
+            "stationX": 0,
+            "stationY": 0,
+            "direction": "right",
+            "power": 2,
+            "cost": [ 60, 35, 50 ]
+        },
+        "pilot": {
+            "room": "room18",
+            "stationX": 0,
+            "stationY": 1,
+            "direction": "right",
+            "power": 1,
+            "cost": [ 50, 20, 50 ]
+        }
+    },
+    "resources": {
+        "fuel": 16,
+        "missiles": 12,
+        "drones": 2,
+        "scrap": 30
+    },
+    "crew": {
+        "Williams": {
+            "room": "room18",
+            "race": "Zoltan"
+        },
+        "Maloney": {
+            "room": "room4",
+            "race": "Zoltan"
+        },
+        "Lombard": {
+            "room": "room1",
+            "race": "Zoltan"
+        }
+    },
+    "weapons": [
+        "Leto"
+    ]
+}

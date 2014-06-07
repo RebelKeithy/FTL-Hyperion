@@ -1,0 +1,398 @@
+{
+    "name": "ZoltanA",
+	"texture": "energy_cruiser_base",
+	"miniship_texture": "miniship_energy_cruiser",
+	"roomtexture": "energy_cruiser_floor",
+    "shieldimage": "energy_cruiser_shields1",
+	"offsetX": 35,
+	"offsetY": 0,
+    "shipTextureOffsetX": -96,
+    "shipTextureOffsetY": -66,
+    "roomTextureOffsetX": -10,
+    "roomTextureOffsetY": -6,
+    "shieldTextureOffsetX": -135,
+    "shieldTextureOffsetY": -97,
+    "thrusterX": [ ],
+    "thrusterY": [ ],
+    "rooms": {
+        "room1": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2,
+            "doors":
+            {
+                "door1": {
+                    "direction": "right",
+                    "offset": 1,
+                    "room": "room4"
+                },
+                "door2": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room4"
+                }
+            }
+        },
+        "room2": {
+            "x": 1,
+            "y": 5,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room6"
+                }
+            }
+        },
+        "room3": {
+            "x": 1,
+            "y": 6,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room6"
+                }
+            }
+        },
+        "room4": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room1"
+                },
+                "door2": {
+                    "direction": "left",
+                    "offset": 1,
+                    "room": "room1"
+                },
+                "door3": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room7"
+                },
+                "door4": {
+                    "direction": "right",
+                    "offset": 1,
+                    "room": "room7"
+                }
+            }
+        },
+        "room5": {
+            "x": 3,
+            "y": 4,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "up",
+                    "offset": 0,
+                    "room": "room6"
+                },
+                "door2": {
+                    "direction": "down",
+                    "offset": 1,
+                    "room": "room8"
+                },
+                "door3": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room9"
+                }
+            }
+        },
+        "room6": {
+            "x": 3,
+            "y": 5,
+            "width": 1,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room2"
+                },
+                "door2": {
+                    "direction": "left",
+                    "offset": 1,
+                    "room": "room3"
+                },
+                "door3": {
+                    "direction": "down",
+                    "offset": 0,
+                    "room": "room5"
+                }
+            }
+        },
+        "room7": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "up",
+                    "offset": 0,
+                    "room": "room8"
+                },
+                "door2": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room4"
+                },
+                "door3": {
+                    "direction": "left",
+                    "offset": 1,
+                    "room": "room4"
+                },
+                "door4": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room10"
+                },
+                "door5": {
+                    "direction": "right",
+                    "offset": 1,
+                    "room": "room10"
+                }
+            }
+        },
+        "room8": {
+            "x": 4,
+            "y": 2,
+            "width": 1,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "up",
+                    "offset": 0,
+                    "room": "room5"
+                },
+                "door2": {
+                    "direction": "left",
+                    "offset": 0
+                },
+                "door3": {
+                    "direction": "left",
+                    "offset": 1
+                },
+                "door4": {
+                    "direction": "down",
+                    "offset": 0,
+                    "room": "room7"
+                },
+                "door5": {
+                    "direction": "right",
+                    "offset": 0
+                },
+                "door6": {
+                    "direction": "right",
+                    "offset": 1
+                }
+            }
+        },
+        "room9": {
+            "x": 5,
+            "y": 4,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room5"
+                },
+                "door2": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room11"
+                }
+            }
+        },
+        "room10": {
+            "x": 6,
+            "y": 0,
+            "width": 2,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room7"
+                },
+                "door2": {
+                    "direction": "left",
+                    "offset": 1,
+                    "room": "room7"
+                }
+            }
+        },
+        "room11": {
+            "x": 7,
+            "y": 3,
+            "width": 1,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 1,
+                    "room": "room9"
+                },
+                "door2": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room12"
+                },
+                "door3": {
+                    "direction": "right",
+                    "offset": 1,
+                    "room": "room13"
+                }
+            }
+        },
+        "room12": {
+            "x": 8,
+            "y": 2,
+            "width": 1,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 1,
+                    "room": "room11"
+                },
+                "door2": {
+                    "direction": "right",
+                    "offset": 1,
+                    "room": "room15"
+                }
+            }
+        },
+        "room13": {
+            "x": 8,
+            "y": 4,
+            "width": 1,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room11"
+                },
+                "door2": {
+                    "direction": "right",
+                    "offset": 1,
+                    "room": "room16"
+                }
+            }
+        },
+        "room14": {
+            "x": 9,
+            "y": 1,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "up",
+                    "offset": 1,
+                    "room": "room17"
+                },
+                "door2": {
+                    "direction": "down",
+                    "offset": 0
+                },
+                "door3": {
+                    "direction": "down",
+                    "offset": 1
+                }
+            }
+        },
+        "room15": {
+            "x": 9,
+            "y": 3,
+            "width": 2,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "up",
+                    "offset": 1,
+                    "room": "room16"
+                },
+                "door2": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room13"
+                },
+                "door3": {
+                    "direction": "down",
+                    "offset": 1,
+                    "room": "room17"
+                }
+            }
+        },
+        "room16": {
+            "x": 9,
+            "y": 5,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room13"
+                },
+                "door2": {
+                    "direction": "down",
+                    "offset": 1,
+                    "room": "room15"
+                }
+            }
+        },
+        "room17": {
+            "x": 10,
+            "y": 2,
+            "width": 2,
+            "height": 1,
+            "doors": {
+                "door1": {
+                    "direction": "up",
+                    "offset": 0,
+                    "room": "room15"
+                },
+                "door2": {
+                    "direction": "down",
+                    "offset": 0,
+                    "room": "room14"
+                },
+                "door3": {
+                    "direction": "right",
+                    "offset": 0,
+                    "room": "room18"
+                }
+            }
+        },
+        "room18": {
+            "x": 12,
+            "y": 2,
+            "width": 1,
+            "height": 2,
+            "doors": {
+                "door1": {
+                    "direction": "left",
+                    "offset": 0,
+                    "room": "room17"
+                }
+            }
+        }
+    }
+}

@@ -170,6 +170,7 @@ public class HangerScreen implements FTLScreen
 		bA.setShip("The Kestrel");
 		bB.setShip("Red-Tail");
 		bC.setShip("The Torus");;
+		
 
 		// Create the ship
 		setShip(bC);
@@ -185,7 +186,7 @@ public class HangerScreen implements FTLScreen
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		
+
 		batch.draw(background, 0, 0);
 		shipRenderer.render(batch, ship);
 

@@ -27,6 +27,12 @@ public class ButtonToggleable extends Button
 	
 	public void render(SpriteBatch batch)
 	{
+		if(disabled)
+		{
+			super.render(batch);
+			return;
+		}
+		
 		int mouseX = Gdx.input.getX();
 		int mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
 		

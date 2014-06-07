@@ -27,33 +27,14 @@ public class ButtonToggleable extends Button
 	
 	public void render(SpriteBatch batch)
 	{
-		if(disabled)
-		{
-			super.render(batch);
-			return;
-		}
-		
-		int mouseX = Gdx.input.getX();
-		int mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
-		
-		boolean oldHovering = hover;
-		hover = containsPoint(mouseX, mouseY);
-		if(hover == true && oldHovering == false)
-		{
-			Sounds.playSound("buttonHover");
-		}
-
 		if(down)
 		{
 			batch.draw(image_down, imageX, imageY);
-		}
-		else if(hover)
-		{
-			batch.draw(image_hover, imageX, imageY);
+			return;
 		}
 		else
 		{
-			batch.draw(image_up, imageX, imageY);
+			super.render(batch);
 		}
 	}
 	
